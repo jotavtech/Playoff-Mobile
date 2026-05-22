@@ -1,0 +1,22 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@playoff/ui": ["../../packages/ui/src"],
+      "@playoff/types": ["../../packages/types/src"],
+      "@playoff/config": ["../../packages/config/src"],
+      "@playoff/utils": ["../../packages/utils/src"],
+      "@playoff/services": ["../../packages/services/src"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
+  ]
+}
