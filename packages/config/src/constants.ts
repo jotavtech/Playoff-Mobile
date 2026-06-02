@@ -1,22 +1,23 @@
-export const APP_NAME = 'Playoff';
+export const APP_NAME = 'Atlas Playoff';
 export const APP_SCHEME = 'playoff';
 
+/** TanStack Query cache keys for the Atlas Playoff domain. */
 export const QUERY_KEYS = {
   auth: ['auth'] as const,
-  profile: ['profile'] as const,
-  home: ['home'] as const,
-  rooms: ['rooms'] as const,
-  room: (id: string) => ['room', id] as const,
-  roomQueue: (id: string) => ['room', id, 'queue'] as const,
-  search: (q: string) => ['search', q] as const,
+  me: ['me'] as const,
+  profile: ['me', 'profile'] as const,
+  stats: ['me', 'stats'] as const,
+  history: ['me', 'history'] as const,
+  badges: ['me', 'badges'] as const,
+  activeRound: ['rounds', 'active'] as const,
+  rounds: ['rounds'] as const,
+  round: (id: string) => ['rounds', id] as const,
+  ranking: (scope: string, id?: string) =>
+    id ? (['ranking', scope, id] as const) : (['ranking', scope] as const),
+  search: (q: string) => ['spotify', 'search', q] as const,
 } as const;
 
 export const STORAGE_KEYS = {
-  authSession: 'playoff.auth.session',
-  settings: 'playoff.user.settings',
-  homeCache: 'playoff.cache.home',
-} as const;
-
-export const REALTIME_CHANNELS = {
-  room: (id: string) => `room:${id}`,
+  authToken: 'atlas.auth.token',
+  settings: 'atlas.user.settings',
 } as const;

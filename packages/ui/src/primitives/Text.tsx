@@ -10,12 +10,10 @@ const variantClasses: Record<TextVariant, string> = {
   display: 'text-3xl font-bold text-foreground',
   title: 'text-xl font-semibold text-foreground',
   body: 'text-base text-foreground',
-  caption: 'text-sm text-muted-foreground',
-  label: 'text-xs font-medium uppercase tracking-wider text-muted-foreground',
+  caption: 'text-sm text-muted',
+  label: 'text-xs font-semibold uppercase tracking-widest text-muted',
 };
 
 export function Text({ variant = 'body', className, ...props }: TextProps) {
-  return (
-    <RNText className={`${variantClasses[variant]} ${className ?? ''}`} {...props} />
-  );
+  return <RNText className={`${variantClasses[variant]} ${className ?? ''}`} {...props} />;
 }

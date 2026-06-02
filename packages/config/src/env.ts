@@ -1,21 +1,19 @@
 /**
- * Public env vars (EXPO_PUBLIC_*) — safe for client bundle.
- * Secrets must NEVER be prefixed with EXPO_PUBLIC_.
+ * Public env vars (EXPO_PUBLIC_*) — safe for the client bundle.
+ * The mobile app talks ONLY to the Atlas backend. Secrets (OpenAI key,
+ * Spotify client secret) live on the backend and are NEVER referenced here.
  */
 export const env = {
   appEnv: process.env.EXPO_PUBLIC_APP_ENV ?? 'development',
-  supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL ?? '',
-  supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ?? '',
+  /** Atlas backend base URL. */
+  apiUrl: process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:3333',
+  /** Public Spotify client id — used for the PKCE auth request only. */
   spotifyClientId: process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID ?? '',
   spotifyRedirectUri: process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI ?? 'playoff://auth/callback',
-  sentryDsn: process.env.EXPO_PUBLIC_SENTRY_DSN ?? '',
 } as const;
 
 export function assertPublicEnv(): void {
-  const required = ['supabaseUrl', 'supabaseAnonKey', 'spotifyClientId'] as const;
-  for (const key of required) {
-    if (!env[key]) {
-      console.warn(`[env] Missing EXPO_PUBLIC config: ${key}`);
-    }
-  }
+  if (!env.apiUrl) console.warn('[env] Missing EXPO_PUBLIC_API_URL');
+  if (!env.spotifyClientId)
+    console.warn('[env] Missing EXPO_PUBLIC_SPOTIFY_CLIENT_ID (Spotify login disabled)');
 }

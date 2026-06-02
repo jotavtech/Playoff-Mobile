@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum RoundStatus {
+  DRAFT
+  ACTIVE
+  FINISHED
+}
+
+model User {
+  id                    String    @id @default(cuid())
+  spotifyUserId         String?   @unique
+  name                  String
+  email                 String?
+  avatarUrl             String?
+  role                  Role      @default(USER)
+  spotifyAccessToken    String?
+  spotifyRefreshToken   String?
+  spotifyTokenExpiresAt DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  votes         Vote[]
+  badges        UserBadge[]
+  aiRequests    AiRequest[]
+  createdRounds Round[]     @relation("RoundCreatedBy")
+
+  @@index([email])
+}
+
+model Song {
+  id             String   @id @default(cuid())
+  spotifyTrackId String   @unique
+  title          String
+  artist         String
+  album          String?
+  coverUrl       String
+  previewUrl     String?
+  externalUrl    String
+  durationMs     Int?
+  popularity     Int?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  roundSongs RoundSong[]
+  votes      Vote[]
+}
+
+model Round {
+  id           String      @id @default(cuid())
+  title        String
+  description  String?
+  status       RoundStatus @default(DRAFT)
+  startsAt     DateTime?
+  endsAt       DateTime?
+  createdById  String?
+  winnerSongId String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  songs     RoundSong[]
+  votes     Vote[]
+  createdBy User?       @relation("RoundCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([createdById])
+}
+
+model RoundSong {
+  id       String @id @default(cuid())
+  roundId  String
+  songId   String
+  position Int
+
+  round Round @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  song  Song  @relation(fields: [songId], references: [id], onDelete: Cascade)
+
+  @@unique([roundId, songId])
+  @@index([roundId])
+  @@index([songId])
+}
+
+model Vote {
+  id        String   @id @default(cuid())
+  userId    String
+  roundId   String
+  songId    String
+  createdAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  round Round @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  song  Song  @relation(fields: [songId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roundId])
+  @@index([roundId])
+  @@index([songId])
+  @@index([createdAt])
+}
+
+model Badge {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String
+  icon        String?
+  createdAt   DateTime @default(now())
+
+  users UserBadge[]
+}
+
+model UserBadge {
+  id       String   @id @default(cuid())
+  userId   String
+  badgeId  String
+  earnedAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge Badge @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeId])
+  @@index([userId])
+}
+
+model AiRequest {
+  id        String   @id @default(cuid())
+  userId    String?
+  type      String
+  prompt    String   @db.Text
+  response  String   @db.Text
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([type])
+}

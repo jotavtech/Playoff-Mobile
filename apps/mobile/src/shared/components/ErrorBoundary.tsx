@@ -19,11 +19,11 @@ export class AppErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <View className="flex-1 items-center justify-center bg-background px-6">
+        <View className="bg-background flex-1 items-center justify-center px-6">
           <Text variant="title" className="mb-2 text-center">
             Algo deu errado
           </Text>
-          <Text variant="body" className="mb-6 text-center text-muted-foreground">
+          <Text variant="body" className="text-muted-foreground mb-6 text-center">
             Tente novamente. Se persistir, reinicie o app.
           </Text>
           <Button label="Tentar novamente" onPress={() => this.setState({ hasError: false })} />

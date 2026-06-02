@@ -7,14 +7,12 @@ type Props = {
 };
 
 /** Fallback-first ambient background — upgrade to Skia in Phase 4 */
-export function PlayerAmbientBackground({
-  colors = ['#1a0a2e', '#0a0a0f', '#0f172a'],
-}: Props) {
+export function PlayerAmbientBackground({ colors = ['#1a0a2e', '#0a0a0f', '#0f172a'] }: Props) {
   const lowEndMode = useSettingsStore((s) => s.lowEndMode);
   const reducedMotion = useSettingsStore((s) => s.reducedMotion);
 
   if (lowEndMode) {
-    return <View className="absolute inset-0 bg-background" />;
+    return <View className="bg-background absolute inset-0" />;
   }
 
   return (

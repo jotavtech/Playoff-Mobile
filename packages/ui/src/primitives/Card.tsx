@@ -7,7 +7,7 @@ type CardProps = ViewProps & {
 export function Card({ glass = false, className, children, ...props }: CardProps) {
   return (
     <View
-      className={`rounded-2xl border border-border p-4 ${glass ? 'bg-card/60' : 'bg-card'} ${className ?? ''}`}
+      className={`rounded-xl border border-border p-4 ${glass ? 'bg-card/70' : 'bg-card'} ${className ?? ''}`}
       {...props}
     >
       {children}

@@ -1,4 +1,37 @@
-/** Design tokens — source of truth for spacing, motion, blur, typography */
+/**
+ * Atlas Playoff — design tokens (source of truth).
+ * Dark, premium, futuristic. Atlas blue + Playoff orange on near-black.
+ * Hex values are mirrored in tailwind.config.js — keep them in sync.
+ */
+
+export const palette = {
+  /** Deepest background. */
+  black: '#030303',
+  /** Secondary background / sheet. */
+  black2: '#08080D',
+  /** Default card surface. */
+  card: '#121216',
+  /** Elevated card / hover surface. */
+  cardElevated: '#17171C',
+  /** Hairline borders. */
+  border: '#25252D',
+  /** Atlas brand blue. */
+  blue: '#0404FA',
+  /** Brighter blue for glows / accents. */
+  blueGlow: '#3D5BFF',
+  /** Playoff brand orange. */
+  orange: '#FB6119',
+  /** Soft orange glow. */
+  orangeGlow: '#FF8A4C',
+  /** Primary text. */
+  white: '#F5F5F5',
+  /** Secondary text. */
+  gray: '#A1A1AA',
+  /** Muted / tertiary text. */
+  grayWeak: '#71717A',
+  success: '#34D399',
+  danger: '#F87171',
+} as const;
 
 export const spacing = {
   0: 0,
@@ -15,18 +48,18 @@ export const spacing = {
 } as const;
 
 export const radius = {
-  sm: 8,
-  md: 12,
-  lg: 16,
-  xl: 20,
-  '2xl': 24,
+  sm: 10,
+  md: 14,
+  lg: 18,
+  xl: 24,
+  '2xl': 30,
   full: 9999,
 } as const;
 
 export const motion = {
   fast: 150,
   normal: 250,
-  slow: 400,
+  slow: 420,
   spring: { damping: 18, stiffness: 180 },
 } as const;
 
@@ -34,17 +67,5 @@ export const blur = {
   sm: 8,
   md: 16,
   lg: 24,
-  xl: 40,
-} as const;
-
-export const colors = {
-  background: '10 10 15',
-  foreground: '245 245 250',
-  card: '18 18 28',
-  primary: '168 85 247',
-  secondary: '39 39 58',
-  muted: '30 30 45',
-  accent: '236 72 153',
-  border: '45 45 68',
-  destructive: '239 68 68',
+  xl: 48,
 } as const;
