@@ -1,13 +1,28 @@
 import { useRouter } from 'expo-router';
 import { useEffect } from 'react';
-import { ActivityIndicator, Pressable, View } from 'react-native';
+import { View } from 'react-native';
 import { Text } from '@playoff/ui';
 import { AtlasBadge } from '@/components/atlas/AtlasBadge';
-import { ScreenContainer } from '@/components/atlas/ScreenContainer';
-import { Icon } from '@/components/ui/Icon';
+import { EditorialPanel } from '@/components/atlas/EditorialPanel';
+import { MetadataBar } from '@/components/atlas/MetadataBar';
+import { PlayoffLogo } from '@/components/atlas/PlayoffLogo';
+import { PrimaryCTA, SecondaryCTA } from '@/components/atlas/PlayoffCTA';
+import { VisualShell } from '@/components/atlas/VisualShell';
 import { useAuth, useSpotifyLogin } from '@/hooks/useAuth';
 import { useAuthStore } from '@/store/auth.store';
 import { palette } from '@/theme/tokens';
+
+const ACCESS_METADATA = [
+  { label: 'ROOM', value: 'PUBLIC/001', tone: 'live' as const },
+  { label: 'MODE', value: 'SOCIAL VOTE' },
+  { label: 'SIGNAL', value: 'ATLAS' },
+];
+
+const SYSTEM_METADATA = [
+  { label: 'SYNC', value: 'REALTIME' },
+  { label: 'CULTURE', value: 'MUSIC' },
+  { label: 'STATUS', value: 'WAITING', tone: 'alert' as const },
+];
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -20,69 +35,81 @@ export default function LoginScreen() {
   }, [isAuthenticated, router]);
 
   return (
-    <ScreenContainer scroll={false} tone="atlas">
-      <View className="flex-1 justify-center gap-8">
-        <View className="items-center gap-3">
-          <AtlasBadge />
-          <Text className="text-foreground text-2xl font-extrabold uppercase tracking-[5px]">
-            Playoff Mobile
+    <VisualShell scroll tone="social" contentBottomPadding={28}>
+      <View className="gap-5">
+        <View className="flex-row items-start justify-between">
+          <AtlasBadge tone="playoff" status="COVER" />
+          <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.grayWeak }}>
+            VOTE ENGINE / 56
           </Text>
         </View>
 
-        <View className="gap-2">
-          <Text variant="display" className="text-center">
-            Entre no Atlas Playoff
-          </Text>
-          <Text variant="caption" className="text-center leading-5">
-            Sua jornada musical começa com sua conta Spotify. Vote, descubra e suba no ranking.
-          </Text>
-        </View>
+        <PlayoffLogo />
+        <MetadataBar items={ACCESS_METADATA} />
 
-        <View className="gap-3">
-          <Pressable
-            onPress={() => void login()}
-            disabled={!ready || isLoading}
-            className={`h-14 flex-row items-center justify-center gap-2 rounded-2xl ${ready && !isLoading ? 'bg-playoff active:opacity-90' : 'bg-card-elevated opacity-70'}`}
-            accessibilityRole="button"
-          >
-            {isLoading ? (
-              <ActivityIndicator color={palette.white} />
-            ) : (
-              <>
-                <Icon name="spotify" size={20} color={palette.white} />
-                <Text className="text-sm font-bold uppercase tracking-widest text-white">
-                  Entrar com Spotify
-                </Text>
-              </>
-            )}
-          </Pressable>
+        <EditorialPanel index="01" eyebrow="interactive cover" title="Nao e login. E a entrada do universo Playoff.">
+          <Text className="text-sm leading-5" style={{ color: palette.gray }}>
+            Salas ao vivo, disputa musical, curadoria Atlas e ranking social no mesmo fluxo. O
+            Spotify entra como fonte, nao como destino.
+          </Text>
+          <View className="flex-row gap-2">
+            <View className="flex-1 border px-2 py-2" style={{ borderColor: palette.paper, borderRadius: 4 }}>
+              <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.acid }}>
+                24H
+              </Text>
+              <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper }}>
+                rooms pulse
+              </Text>
+            </View>
+            <View className="flex-1 border px-2 py-2" style={{ borderColor: palette.orange, borderRadius: 4 }}>
+              <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.orange }}>
+                AI
+              </Text>
+              <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper }}>
+                atlas picks
+              </Text>
+            </View>
+          </View>
+        </EditorialPanel>
 
-          <Pressable
-            onPress={() => {
-              continueAsGuest();
-              if (router.canGoBack()) router.back();
-            }}
-            className="border-border h-12 items-center justify-center rounded-2xl border active:opacity-80"
-          >
-            <Text className="text-muted text-sm font-semibold">Continuar sem conta</Text>
-          </Pressable>
+        <EditorialPanel index="02" eyebrow="access stack" accent={palette.cyan}>
+          <View className="gap-3">
+            <PrimaryCTA
+              icon="spotify"
+              label="Entrar com Spotify"
+              loading={isLoading}
+              disabled={!ready || isLoading}
+              onPress={() => void login()}
+            />
+            <SecondaryCTA
+              icon="external"
+              label="Explorar como convidado"
+              onPress={() => {
+                continueAsGuest();
+                if (router.canGoBack()) router.back();
+              }}
+            />
+          </View>
 
           {!ready ? (
-            <Text variant="caption" className="text-muted-weak text-center">
-              Configure EXPO_PUBLIC_SPOTIFY_CLIENT_ID para habilitar o login.
+            <Text variant="caption" className="text-center" style={{ color: palette.orange }}>
+              Configure EXPO_PUBLIC_SPOTIFY_CLIENT_ID para ativar o login Spotify.
             </Text>
           ) : null}
           {error ? (
-            <Text variant="caption" className="text-danger text-center">
+            <Text variant="caption" className="text-center" style={{ color: palette.danger }}>
               {error}
             </Text>
           ) : null}
-        </View>
+        </EditorialPanel>
 
-        <Text variant="caption" className="text-muted-weak text-center">
-          Sem conta você pode explorar rodadas, mas não votar nem salvar histórico.
-        </Text>
+        <View className="gap-2 border-t pt-3" style={{ borderTopColor: 'rgba(232,230,221,0.2)' }}>
+          <MetadataBar items={SYSTEM_METADATA} />
+          <Text className="font-mono text-[10px] leading-4" style={{ color: palette.grayWeak }}>
+            Guest mode libera leitura da rodada. Voto, historico e salas persistentes exigem login.
+          </Text>
+        </View>
       </View>
-    </ScreenContainer>
+    </VisualShell>
   );
 }

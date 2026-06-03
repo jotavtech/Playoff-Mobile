@@ -23,6 +23,16 @@ export const palette = {
   orange: '#FB6119',
   /** Soft orange glow. */
   orangeGlow: '#FF8A4C',
+  /** Editorial cyan accent for technical UI. */
+  cyan: '#37F5FF',
+  /** Acid green accent for live/status details. */
+  acid: '#D7FF3F',
+  /** Magenta accent for social/music energy. */
+  magenta: '#FF3DB8',
+  /** Ink surface used by brutalist panels. */
+  ink: '#0D0D10',
+  /** Washed white for high-contrast editorial blocks. */
+  paper: '#E8E6DD',
   /** Primary text. */
   white: '#F5F5F5',
   /** Secondary text. */
@@ -31,6 +41,39 @@ export const palette = {
   grayWeak: '#71717A',
   success: '#34D399',
   danger: '#F87171',
+} as const;
+
+export const visualTheme = {
+  surface: palette.ink,
+  surfaceElevated: palette.cardElevated,
+  border: '#34343D',
+  borderStrong: palette.paper,
+  muted: palette.gray,
+  glow: palette.blueGlow,
+  accent: palette.orange,
+  accentAlt: palette.cyan,
+  live: palette.acid,
+} as const;
+
+export const accentPalettes = {
+  atlas: {
+    accent: palette.blueGlow,
+    accentAlt: palette.cyan,
+    glow: 'rgba(61, 91, 255, 0.34)',
+    surface: palette.ink,
+  },
+  playoff: {
+    accent: palette.orange,
+    accentAlt: palette.acid,
+    glow: 'rgba(251, 97, 25, 0.32)',
+    surface: palette.black2,
+  },
+  social: {
+    accent: palette.magenta,
+    accentAlt: palette.cyan,
+    glow: 'rgba(255, 61, 184, 0.26)',
+    surface: palette.card,
+  },
 } as const;
 
 export const spacing = {
