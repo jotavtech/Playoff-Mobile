@@ -11,15 +11,21 @@ type ButtonProps = PressableProps & {
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-primary active:opacity-90',
-  secondary: 'bg-secondary active:opacity-90',
-  ghost: 'bg-transparent active:bg-muted/20',
+  primary: 'bg-playoff active:opacity-90',
+  secondary: 'bg-card-elevated border border-border active:opacity-90',
+  ghost: 'bg-transparent active:bg-card-elevated',
+};
+
+const labelClasses: Record<ButtonVariant, string> = {
+  primary: 'text-white',
+  secondary: 'text-foreground',
+  ghost: 'text-muted',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'px-3 py-2 rounded-lg',
-  md: 'px-4 py-3 rounded-xl',
-  lg: 'px-6 py-4 rounded-2xl',
+  sm: 'px-3 py-2 rounded-md',
+  md: 'px-4 py-3 rounded-lg',
+  lg: 'px-6 py-4 rounded-xl',
 };
 
 export function Button({
@@ -37,7 +43,7 @@ export function Button({
       className={`items-center justify-center ${variantClasses[variant]} ${sizeClasses[size]} ${disabled ? 'opacity-50' : ''} ${className ?? ''}`}
       {...props}
     >
-      <Text variant="label" className={variant === 'ghost' ? 'text-foreground' : 'text-primary-foreground'}>
+      <Text variant="label" className={labelClasses[variant]}>
         {label}
       </Text>
     </Pressable>

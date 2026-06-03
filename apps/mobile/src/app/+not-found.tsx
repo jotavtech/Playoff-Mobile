@@ -6,7 +6,7 @@ export default function NotFoundScreen() {
   return (
     <>
       <Stack.Screen options={{ title: 'Não encontrado' }} />
-      <View className="flex-1 items-center justify-center bg-background px-6">
+      <View className="bg-background flex-1 items-center justify-center px-6">
         <Text variant="title" className="mb-4">
           Tela não existe
         </Text>

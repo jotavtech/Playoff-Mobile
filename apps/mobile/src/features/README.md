@@ -9,11 +9,11 @@ Arquitetura por feature. Regras:
 
 ## Ordem de implementação
 
-| Phase | Feature | Pasta |
-|-------|---------|-------|
-| 3 | Auth Spotify PKCE | `auth/` |
-| 4 | Player global | `player/` |
-| 5 | Rooms + realtime | `rooms/` |
-| 2+ | Home feed | `home/` |
-| 7 | Search | `search/` |
-| 6+ | Social | `social/` |
+| Phase | Feature           | Pasta     |
+| ----- | ----------------- | --------- |
+| 3     | Auth Spotify PKCE | `auth/`   |
+| 4     | Player global     | `player/` |
+| 5     | Rooms + realtime  | `rooms/`  |
+| 2+    | Home feed         | `home/`   |
+| 7     | Search            | `search/` |
+| 6+    | Social            | `social/` |
