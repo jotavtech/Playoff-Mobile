@@ -13,15 +13,15 @@ import { useAuthStore } from '@/store/auth.store';
 import { palette } from '@/theme/tokens';
 
 const ACCESS_METADATA = [
-  { label: 'ROOM', value: 'PUBLIC/001', tone: 'live' as const },
-  { label: 'MODE', value: 'SOCIAL VOTE' },
-  { label: 'SIGNAL', value: 'ATLAS' },
+  { label: 'SYS', value: 'ONLINE', tone: 'live' as const },
+  { label: 'NODE', value: 'PLF_01' },
+  { label: 'MODE', value: 'ENTRY' },
 ];
 
 const SYSTEM_METADATA = [
-  { label: 'SYNC', value: 'REALTIME' },
-  { label: 'CULTURE', value: 'MUSIC' },
-  { label: 'STATUS', value: 'WAITING', tone: 'alert' as const },
+  { label: 'AUTH', value: 'SPOTIFY' },
+  { label: 'ROOMS', value: 'SOCIAL' },
+  { label: 'REC', value: 'ON', tone: 'alert' as const },
 ];
 
 export default function LoginScreen() {
@@ -35,44 +35,46 @@ export default function LoginScreen() {
   }, [isAuthenticated, router]);
 
   return (
-    <VisualShell scroll tone="social" contentBottomPadding={28}>
-      <View className="gap-5">
+    <VisualShell scroll tone="playoff" contentBottomPadding={28}>
+      <View className="gap-6">
         <View className="flex-row items-start justify-between">
-          <AtlasBadge tone="playoff" status="COVER" />
-          <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.grayWeak }}>
-            VOTE ENGINE / 56
+          <AtlasBadge label="PLAYOFF" tone="playoff" status="ENTRY" />
+          <Text className="font-mono text-[10px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
+            BRT / NODE_02
           </Text>
         </View>
 
-        <PlayoffLogo />
+        <View className="mt-10">
+          <PlayoffLogo kicker="[ NODE_27.12.05 ] / ATLAS MUSIC SYSTEM" />
+        </View>
         <MetadataBar items={ACCESS_METADATA} />
 
-        <EditorialPanel index="01" eyebrow="interactive cover" title="Nao e login. E a entrada do universo Playoff.">
-          <Text className="text-sm leading-5" style={{ color: palette.gray }}>
-            Salas ao vivo, disputa musical, curadoria Atlas e ranking social no mesmo fluxo. O
-            Spotify entra como fonte, nao como destino.
+        <EditorialPanel index="01" eyebrow="dossier_2026" title="Capa interativa do universo Playoff.">
+          <Text className="text-sm leading-6" style={{ color: palette.gray }}>
+            Salas ao vivo, voto musical, curadoria Atlas e ranking social em uma interface de
+            sistema. Spotify e apenas a chave de acesso.
           </Text>
           <View className="flex-row gap-2">
-            <View className="flex-1 border px-2 py-2" style={{ borderColor: palette.paper, borderRadius: 4 }}>
-              <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.acid }}>
-                24H
+            <View className="flex-1 border px-2 py-2" style={{ borderColor: 'rgba(242,238,231,0.12)', borderRadius: 2 }}>
+              <Text className="font-mono text-[10px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
+                ORIGIN
               </Text>
-              <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper }}>
-                rooms pulse
+              <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper, letterSpacing: 1.5 }}>
+                ATLAS / BR
               </Text>
             </View>
-            <View className="flex-1 border px-2 py-2" style={{ borderColor: palette.orange, borderRadius: 4 }}>
-              <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.orange }}>
-                AI
+            <View className="flex-1 border px-2 py-2" style={{ borderColor: 'rgba(255,59,31,0.38)', borderRadius: 2 }}>
+              <Text className="font-mono text-[10px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
+                STATUS
               </Text>
-              <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper }}>
-                atlas picks
+              <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.orange, letterSpacing: 1.5 }}>
+                AVAILABLE
               </Text>
             </View>
           </View>
         </EditorialPanel>
 
-        <EditorialPanel index="02" eyebrow="access stack" accent={palette.cyan}>
+        <EditorialPanel index="02" eyebrow="access_stack">
           <View className="gap-3">
             <PrimaryCTA
               icon="spotify"
@@ -92,7 +94,7 @@ export default function LoginScreen() {
           </View>
 
           {!ready ? (
-            <Text variant="caption" className="text-center" style={{ color: palette.orange }}>
+            <Text variant="caption" className="text-center font-mono" style={{ color: palette.orange }}>
               Configure EXPO_PUBLIC_SPOTIFY_CLIENT_ID para ativar o login Spotify.
             </Text>
           ) : null}
@@ -103,10 +105,10 @@ export default function LoginScreen() {
           ) : null}
         </EditorialPanel>
 
-        <View className="gap-2 border-t pt-3" style={{ borderTopColor: 'rgba(232,230,221,0.2)' }}>
+        <View className="gap-2 border-t pt-3" style={{ borderTopColor: 'rgba(242,238,231,0.08)' }}>
           <MetadataBar items={SYSTEM_METADATA} />
-          <Text className="font-mono text-[10px] leading-4" style={{ color: palette.grayWeak }}>
-            Guest mode libera leitura da rodada. Voto, historico e salas persistentes exigem login.
+          <Text className="font-mono text-[10px] leading-5" style={{ color: palette.grayWeak, letterSpacing: 1.8 }}>
+            GUEST MODE libera leitura da rodada. VOTO / HISTORICO / ROOMS persistentes exigem login.
           </Text>
         </View>
       </View>

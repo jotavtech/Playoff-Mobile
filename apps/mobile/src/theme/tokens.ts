@@ -1,77 +1,77 @@
 /**
- * Atlas Playoff — design tokens (source of truth).
- * Dark, premium, futuristic. Atlas blue + Playoff orange on near-black.
- * Hex values are mirrored in tailwind.config.js — keep them in sync.
+ * Atlas Playoff visual tokens (source of truth).
+ * Technical noir: absolute black, warm off-white, low-contrast grid, signal red.
+ * Hex values are mirrored in tailwind.config.js - keep them in sync.
  */
 
 export const palette = {
   /** Deepest background. */
-  black: '#030303',
+  black: '#070707',
   /** Secondary background / sheet. */
-  black2: '#08080D',
-  /** Default card surface. */
-  card: '#121216',
-  /** Elevated card / hover surface. */
-  cardElevated: '#17171C',
+  black2: '#0A0908',
+  /** Default panel surface. */
+  card: '#0E0D0C',
+  /** Elevated panel surface. */
+  cardElevated: '#151311',
   /** Hairline borders. */
-  border: '#25252D',
-  /** Atlas brand blue. */
-  blue: '#0404FA',
-  /** Brighter blue for glows / accents. */
-  blueGlow: '#3D5BFF',
-  /** Playoff brand orange. */
-  orange: '#FB6119',
-  /** Soft orange glow. */
-  orangeGlow: '#FF8A4C',
-  /** Editorial cyan accent for technical UI. */
-  cyan: '#37F5FF',
-  /** Acid green accent for live/status details. */
-  acid: '#D7FF3F',
-  /** Magenta accent for social/music energy. */
-  magenta: '#FF3DB8',
-  /** Ink surface used by brutalist panels. */
-  ink: '#0D0D10',
-  /** Washed white for high-contrast editorial blocks. */
-  paper: '#E8E6DD',
+  border: '#23211E',
+  /** Legacy Atlas neutral. */
+  blue: '#2C2A27',
+  /** Legacy Atlas glow neutral. */
+  blueGlow: '#5C554D',
+  /** Playoff signal red. */
+  orange: '#FF3B1F',
+  /** Soft red haze. */
+  orangeGlow: '#A33A24',
+  /** Technical neutral accent. */
+  cyan: '#BDB5AA',
+  /** High-contrast status text. */
+  acid: '#F2EEE7',
+  /** Muted red alternate. */
+  magenta: '#8F2B1F',
+  /** Ink surface used by dossier panels. */
+  ink: '#090807',
+  /** Warm paper white. */
+  paper: '#F2EEE7',
   /** Primary text. */
-  white: '#F5F5F5',
+  white: '#F2EEE7',
   /** Secondary text. */
-  gray: '#A1A1AA',
+  gray: '#BDB5AA',
   /** Muted / tertiary text. */
-  grayWeak: '#71717A',
-  success: '#34D399',
-  danger: '#F87171',
+  grayWeak: '#736C63',
+  success: '#BDB5AA',
+  danger: '#FF3B1F',
 } as const;
 
 export const visualTheme = {
   surface: palette.ink,
   surfaceElevated: palette.cardElevated,
-  border: '#34343D',
+  border: '#2B2824',
   borderStrong: palette.paper,
   muted: palette.gray,
-  glow: palette.blueGlow,
+  glow: palette.orangeGlow,
   accent: palette.orange,
-  accentAlt: palette.cyan,
-  live: palette.acid,
+  accentAlt: palette.paper,
+  live: palette.paper,
 } as const;
 
 export const accentPalettes = {
   atlas: {
-    accent: palette.blueGlow,
-    accentAlt: palette.cyan,
-    glow: 'rgba(61, 91, 255, 0.34)',
+    accent: palette.orange,
+    accentAlt: palette.paper,
+    glow: 'rgba(255, 59, 31, 0.16)',
     surface: palette.ink,
   },
   playoff: {
     accent: palette.orange,
-    accentAlt: palette.acid,
-    glow: 'rgba(251, 97, 25, 0.32)',
+    accentAlt: palette.paper,
+    glow: 'rgba(255, 59, 31, 0.18)',
     surface: palette.black2,
   },
   social: {
-    accent: palette.magenta,
-    accentAlt: palette.cyan,
-    glow: 'rgba(255, 61, 184, 0.26)',
+    accent: palette.orange,
+    accentAlt: palette.gray,
+    glow: 'rgba(255, 59, 31, 0.14)',
     surface: palette.card,
   },
 } as const;
@@ -91,11 +91,11 @@ export const spacing = {
 } as const;
 
 export const radius = {
-  sm: 10,
-  md: 14,
-  lg: 18,
-  xl: 24,
-  '2xl': 30,
+  sm: 4,
+  md: 6,
+  lg: 8,
+  xl: 10,
+  '2xl': 12,
   full: 9999,
 } as const;
 

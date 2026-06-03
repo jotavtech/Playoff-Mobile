@@ -42,27 +42,27 @@ export function EditorialPanel({
       style={[
         {
           borderWidth: 1,
-          borderColor: 'rgba(232,230,221,0.26)',
-          backgroundColor: 'rgba(13,13,16,0.86)',
-          borderRadius: 6,
+          borderColor: 'rgba(242,238,231,0.12)',
+          backgroundColor: 'rgba(7,7,7,0.72)',
+          borderRadius: 2,
         },
         animatedStyle,
       ]}
     >
       <View
         className="flex-row items-center justify-between border-b px-3 py-2"
-        style={{ borderBottomColor: 'rgba(232,230,221,0.18)' }}
+        style={{ borderBottomColor: 'rgba(242,238,231,0.08)' }}
       >
-        <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: accent }}>
+        <Text className="font-mono text-[10px] uppercase" style={{ color: accent, letterSpacing: 2.8 }}>
           {index}
         </Text>
-        <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.gray }}>
+        <Text className="font-mono text-[10px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.8 }}>
           {eyebrow}
         </Text>
       </View>
       <View className="gap-3 p-3">
         {title ? (
-          <Text className="text-lg font-black uppercase leading-5" style={{ color: palette.paper }}>
+          <Text className="text-base font-black uppercase leading-5" style={{ color: palette.paper }}>
             {title}
           </Text>
         ) : null}

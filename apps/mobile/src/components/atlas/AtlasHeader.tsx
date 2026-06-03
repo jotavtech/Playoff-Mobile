@@ -1,5 +1,6 @@
 import { View } from 'react-native';
 import { Text } from '@playoff/ui';
+import { palette } from '@/theme/tokens';
 import { AtlasBadge } from './AtlasBadge';
 
 type AtlasHeaderProps = {
@@ -14,7 +15,7 @@ export function AtlasHeader({ right, subtitle = 'PLAYOFF MOBILE' }: AtlasHeaderP
     <View className="flex-row items-start justify-between">
       <View className="gap-2">
         <AtlasBadge />
-        <Text className="text-foreground text-base font-extrabold uppercase tracking-[4px]">
+        <Text className="font-mono text-[11px] uppercase" style={{ color: palette.gray, letterSpacing: 3.1 }}>
           {subtitle}
         </Text>
       </View>

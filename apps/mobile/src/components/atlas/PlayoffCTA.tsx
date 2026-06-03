@@ -26,19 +26,19 @@ export function PrimaryCTA({ label, icon = 'arrow-right', loading, disabled, ...
       <View
         className="h-full flex-row items-center justify-between px-4"
         style={{
-          borderRadius: 6,
-          backgroundColor: palette.paper,
+          borderRadius: 2,
+          backgroundColor: 'rgba(7,7,7,0.82)',
           borderWidth: 1,
-          borderColor: palette.black,
+          borderColor: 'rgba(242,238,231,0.28)',
         }}
       >
         <View className="flex-row items-center gap-3">
-          {loading ? <ActivityIndicator color={palette.black} /> : <Icon name={icon} size={20} color={palette.black} />}
-          <Text className="text-sm font-black uppercase" style={{ color: palette.black, letterSpacing: 1.6 }}>
+          {loading ? <ActivityIndicator color={palette.paper} /> : <Icon name={icon} size={20} color={palette.paper} />}
+          <Text className="text-xs font-black uppercase" style={{ color: palette.paper, letterSpacing: 2.8 }}>
             {label}
           </Text>
         </View>
-        <Text className="font-mono text-[10px] font-bold" style={{ color: palette.black }}>
+        <Text className="font-mono text-[10px]" style={{ color: palette.orange, letterSpacing: 2.4 }}>
           ENTER
         </Text>
       </View>
@@ -62,18 +62,18 @@ export function SecondaryCTA({ label, icon = 'external', disabled, ...props }: C
         className="h-full flex-row items-center justify-between px-4"
         style={{
           borderRadius: 6,
-          backgroundColor: 'rgba(8,8,13,0.72)',
+          backgroundColor: 'rgba(7,7,7,0.54)',
           borderWidth: 1,
-          borderColor: 'rgba(232,230,221,0.28)',
+          borderColor: 'rgba(242,238,231,0.12)',
         }}
       >
         <View className="flex-row items-center gap-3">
-          <Icon name={icon} size={18} color={palette.cyan} />
-          <Text className="text-xs font-bold uppercase" style={{ color: palette.paper, letterSpacing: 1.4 }}>
+          <Icon name={icon} size={18} color={palette.gray} />
+          <Text className="text-xs font-bold uppercase" style={{ color: palette.gray, letterSpacing: 2.6 }}>
             {label}
           </Text>
         </View>
-        <View style={{ width: 34, height: 1, backgroundColor: palette.cyan }} />
+        <View style={{ width: 34, height: 1, backgroundColor: palette.orange }} />
       </View>
     </Pressable>
   );

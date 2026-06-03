@@ -46,11 +46,7 @@ export function AccentOrb({
   }, [drift, reducedMotion]);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [
-      { translateX: drift.value * 18 },
-      { translateY: drift.value * -10 },
-      { rotate },
-    ],
+    transform: [{ translateX: drift.value * 10 }, { translateY: drift.value * -6 }, { rotate }],
   }));
 
   return (
@@ -64,21 +60,19 @@ export function AccentOrb({
           left,
           right,
           width: size,
-          height: Math.round(size * 0.58),
+          height: Math.round(size * 0.64),
           opacity,
         },
         animatedStyle,
       ]}
     >
       <LinearGradient
-        colors={[color, 'rgba(255,255,255,0.08)', secondaryColor, 'rgba(3,3,3,0)']}
+        colors={[color, 'rgba(255,59,31,0.08)', secondaryColor, 'rgba(7,7,7,0)']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{
           flex: 1,
-          borderRadius: 8,
-          borderWidth: 1,
-          borderColor: 'rgba(255,255,255,0.18)',
+          borderRadius: 2,
         }}
       />
     </Animated.View>

@@ -59,7 +59,7 @@ export default function HomeScreen() {
       />
 
       <View className="gap-3">
-        <PlayoffLogo compact kicker="HOME / LIVE INDEX" />
+        <PlayoffLogo compact kicker="[ H ] HOME / LIVE INDEX" />
         <MetadataBar items={homeMetadata} />
       </View>
 
@@ -70,20 +70,20 @@ export default function HomeScreen() {
       >
         <Text className="text-sm leading-5" style={{ color: palette.gray }}>
           {round
-            ? 'A Home agora funciona como painel de controle: lider, ranking, voto e curadoria Atlas no mesmo grid.'
+            ? 'Painel de controle da rodada: lider, ranking, voto e curadoria Atlas no mesmo grid tecnico.'
             : 'Crie uma batalha musical com o Atlas AI Curator ou aguarde a proxima sala abrir.'}
         </Text>
         <View className="flex-row gap-2">
-          <View className="flex-1 border px-2 py-2" style={{ borderColor: palette.orange, borderRadius: 4 }}>
-            <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.orange }}>
+          <View className="flex-1 border px-2 py-2" style={{ borderColor: 'rgba(255,59,31,0.38)', borderRadius: 2 }}>
+            <Text className="font-mono text-[10px] uppercase" style={{ color: palette.orange, letterSpacing: 2.4 }}>
               LEADER
             </Text>
             <Text numberOfLines={1} className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper }}>
               {leader?.title ?? 'pending'}
             </Text>
           </View>
-          <View className="flex-1 border px-2 py-2" style={{ borderColor: palette.cyan, borderRadius: 4 }}>
-            <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.cyan }}>
+          <View className="flex-1 border px-2 py-2" style={{ borderColor: 'rgba(242,238,231,0.12)', borderRadius: 2 }}>
+            <Text className="font-mono text-[10px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
               VOTES
             </Text>
             <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper }}>
@@ -101,14 +101,14 @@ export default function HomeScreen() {
           onRetry={() => void refetch()}
         />
       ) : !round ? (
-        <EditorialPanel index="00" eyebrow="empty stage" accent={palette.cyan}>
+        <EditorialPanel index="00" eyebrow="empty_stage">
           <View className="gap-3">
             <Text className="text-2xl font-black uppercase leading-7" style={{ color: palette.paper }}>
               Nenhuma rodada ativa
             </Text>
             <Text className="text-sm leading-5" style={{ color: palette.gray }}>
               O palco esta em espera. Acione o Atlas Curator para montar uma disputa com cara de
-              sala, nao de playlist.
+              sistema social, nao de playlist.
             </Text>
             <AiCuratorButton onPress={() => router.push('/ai-curator')} />
           </View>
@@ -127,9 +127,9 @@ export default function HomeScreen() {
 
           {top3.length > 0 ? (
             <View className="gap-3">
-              <View className="flex-row items-end justify-between border-b pb-2" style={{ borderBottomColor: 'rgba(232,230,221,0.2)' }}>
+              <View className="flex-row items-end justify-between border-b pb-2" style={{ borderBottomColor: 'rgba(242,238,231,0.08)' }}>
                 <View>
-                  <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.orange }}>
+                  <Text className="font-mono text-[10px] uppercase" style={{ color: palette.orange, letterSpacing: 2.6 }}>
                     02 / ranking
                   </Text>
                   <Text className="text-base font-black uppercase" style={{ color: palette.paper }}>

@@ -1,8 +1,8 @@
 import { View } from 'react-native';
 import { palette } from '@/theme/tokens';
 
-const VERTICAL_LINES = Array.from({ length: 7 }, (_, index) => index);
-const HORIZONTAL_LINES = Array.from({ length: 11 }, (_, index) => index);
+const VERTICAL_LINES = Array.from({ length: 6 }, (_, index) => index);
+const HORIZONTAL_LINES = Array.from({ length: 9 }, (_, index) => index);
 const NOISE_MARKS = [
   { top: '9%', left: '22%', width: 18 },
   { top: '14%', left: '74%', width: 6 },
@@ -59,6 +59,7 @@ export function GridOverlay({ opacity = 0.18 }: GridOverlayProps) {
           width: 36,
           height: 1,
           backgroundColor: palette.orange,
+          opacity: 0.8,
         }}
       />
       <View
@@ -69,6 +70,7 @@ export function GridOverlay({ opacity = 0.18 }: GridOverlayProps) {
           width: 1,
           height: 36,
           backgroundColor: palette.orange,
+          opacity: 0.8,
         }}
       />
       <View
@@ -78,7 +80,7 @@ export function GridOverlay({ opacity = 0.18 }: GridOverlayProps) {
           bottom: 28,
           width: 44,
           height: 1,
-          backgroundColor: palette.cyan,
+          backgroundColor: palette.grayWeak,
         }}
       />
       <View
@@ -88,7 +90,7 @@ export function GridOverlay({ opacity = 0.18 }: GridOverlayProps) {
           bottom: 28,
           width: 1,
           height: 44,
-          backgroundColor: palette.cyan,
+          backgroundColor: palette.grayWeak,
         }}
       />
       {NOISE_MARKS.map((mark) => (
@@ -101,7 +103,7 @@ export function GridOverlay({ opacity = 0.18 }: GridOverlayProps) {
             width: mark.width,
             height: 1,
             backgroundColor: palette.paper,
-            opacity: 0.62,
+            opacity: 0.32,
           }}
         />
       ))}

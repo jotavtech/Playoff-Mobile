@@ -30,7 +30,7 @@ export function VisualShell({
   const { width } = useWindowDimensions();
   const lowEndMode = useSettingsStore((s) => s.lowEndMode);
   const theme = accentPalettes[tone];
-  const horizontalPadding = width >= 520 ? 24 : 18;
+  const horizontalPadding = width >= 520 ? 24 : 20;
   const contentStyle = {
     width: '100%' as const,
     maxWidth: maxContentWidth,
@@ -46,26 +46,26 @@ export function VisualShell({
       style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, overflow: 'hidden' }}
     >
       <LinearGradient
-        colors={[palette.black, theme.surface, palette.black2, palette.black]}
-        locations={[0, 0.34, 0.72, 1]}
+        colors={[palette.black, palette.black, theme.surface, palette.black]}
+        locations={[0, 0.3, 0.68, 1]}
         style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
       />
       <AccentOrb
-        color={theme.accent}
-        secondaryColor={theme.accentAlt}
-        size={360}
-        top={-72}
-        right={-150}
-        opacity={lowEndMode ? 0.12 : 0.28}
+        color="rgba(255,59,31,0.24)"
+        secondaryColor="rgba(255,59,31,0.04)"
+        size={520}
+        top={118}
+        right={-180}
+        opacity={lowEndMode ? 0.08 : 0.2}
       />
       <AccentOrb
-        color={theme.accentAlt}
-        secondaryColor={palette.paper}
-        size={280}
-        bottom={112}
-        left={-156}
-        rotate="18deg"
-        opacity={lowEndMode ? 0.1 : 0.2}
+        color="rgba(242,238,231,0.04)"
+        secondaryColor="rgba(255,59,31,0.08)"
+        size={420}
+        bottom={68}
+        left={-220}
+        rotate="10deg"
+        opacity={lowEndMode ? 0.04 : 0.1}
       />
       <View
         style={{
@@ -76,12 +76,12 @@ export function VisualShell({
           height: 76,
           borderTopWidth: 1,
           borderBottomWidth: 1,
-          borderColor: 'rgba(232,230,221,0.18)',
-          backgroundColor: 'rgba(255,255,255,0.025)',
-          transform: [{ rotate: '-8deg' }],
+          borderColor: 'rgba(242,238,231,0.055)',
+          backgroundColor: 'rgba(242,238,231,0.012)',
+          transform: [{ rotate: '-4deg' }],
         }}
       />
-      <GridOverlay opacity={lowEndMode ? 0.08 : 0.14} />
+      <GridOverlay opacity={lowEndMode ? 0.045 : 0.075} />
       <View
         style={{
           position: 'absolute',
@@ -89,8 +89,8 @@ export function VisualShell({
           right: 0,
           bottom: 0,
           left: 0,
-          opacity: lowEndMode ? 0.03 : 0.07,
-          backgroundColor: palette.paper,
+          opacity: lowEndMode ? 0.015 : 0.026,
+          backgroundColor: palette.grayWeak,
         }}
       />
     </View>
