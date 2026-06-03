@@ -13,12 +13,12 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
+    "@expo/metro-runtime": "~56.0.13",
     "@playoff/config": "workspace:*",
     "@playoff/services": "workspace:*",
     "@playoff/types": "workspace:*",
     "@playoff/ui": "workspace:*",
     "@playoff/utils": "workspace:*",
-    "@expo/metro-runtime": "~56.0.13",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@shopify/flash-list": "2.0.2",
     "@shopify/react-native-skia": "2.6.2",
@@ -47,6 +47,7 @@
     "react-dom": "19.2.3",
     "react-hook-form": "^7.54.2",
     "react-native": "0.85.3",
+    "react-native-css-interop": "0.2.4",
     "react-native-gesture-handler": "~2.31.2",
     "react-native-mmkv": "^3.2.0",
     "react-native-reanimated": "4.3.1",
