@@ -43,14 +43,14 @@ apps/mobile/src/
 
 ## Roadmap (implementar nesta ordem)
 
-| Phase | Escopo | Status |
-|-------|--------|--------|
-| 1 | Foundation (monorepo, router, nativewind, stores) | ✅ Scaffold |
-| 2 | Design system (`theme/`, `@playoff/ui`) | 🔲 |
-| 3 | Auth Spotify PKCE + Secure Store + guards | 🔲 |
-| 4 | Global player + visuals ambient | 🔲 |
-| 5 | Rooms + Supabase Realtime + voting | 🔲 |
-| 6 | Polish, Sentry, a11y, performance | 🔲 |
+| Phase | Escopo                                            | Status      |
+| ----- | ------------------------------------------------- | ----------- |
+| 1     | Foundation (monorepo, router, nativewind, stores) | ✅ Scaffold |
+| 2     | Design system (`theme/`, `@playoff/ui`)           | 🔲          |
+| 3     | Auth Spotify PKCE + Secure Store + guards         | 🔲          |
+| 4     | Global player + visuals ambient                   | 🔲          |
+| 5     | Rooms + Supabase Realtime + voting                | 🔲          |
+| 6     | Polish, Sentry, a11y, performance                 | 🔲          |
 
 ## 5 visuais obrigatórios (PRD)
 

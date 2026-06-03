@@ -51,19 +51,19 @@ Required secrets are **lazily** validated inside each integration client, so the
 server still boots for routes that don't need a given integration. Secret values
 are never logged.
 
-| Var | Notes |
-| --- | --- |
-| `NODE_ENV` | `development` / `production` |
-| `PORT` | default `3333` |
-| `APP_BASE_URL` | public base URL of this API |
-| `DATABASE_URL` | PostgreSQL connection string |
-| `SPOTIFY_CLIENT_ID` / `SPOTIFY_CLIENT_SECRET` | Spotify app credentials |
-| `SPOTIFY_REDIRECT_URI` | registered redirect URI |
-| `OPENAI_API_KEY` | OpenAI key |
-| `OPENAI_MODEL` | default `gpt-4o-mini` |
-| `JWT_SECRET` | signing secret |
-| `JWT_EXPIRES_IN` | default `30d` |
-| `MOBILE_REDIRECT_URI` | mobile deep-link redirect |
+| Var                                           | Notes                        |
+| --------------------------------------------- | ---------------------------- |
+| `NODE_ENV`                                    | `development` / `production` |
+| `PORT`                                        | default `3333`               |
+| `APP_BASE_URL`                                | public base URL of this API  |
+| `DATABASE_URL`                                | PostgreSQL connection string |
+| `SPOTIFY_CLIENT_ID` / `SPOTIFY_CLIENT_SECRET` | Spotify app credentials      |
+| `SPOTIFY_REDIRECT_URI`                        | registered redirect URI      |
+| `OPENAI_API_KEY`                              | OpenAI key                   |
+| `OPENAI_MODEL`                                | default `gpt-4o-mini`        |
+| `JWT_SECRET`                                  | signing secret               |
+| `JWT_EXPIRES_IN`                              | default `30d`                |
+| `MOBILE_REDIRECT_URI`                         | mobile deep-link redirect    |
 
 ## Architecture
 

@@ -36,14 +36,14 @@ flowchart TB
 
 ## Camadas
 
-| Camada | Responsabilidade |
-|--------|-------------------|
-| `app/` | Rotas, layouts, navegação |
-| `features/` | Domínio por produto (auth, player, rooms…) |
-| `shared/` | UI/helpers reutilizáveis entre features |
-| `visual/` | Gráficos GPU/Skia/motion isolados |
-| `packages/services` | HTTP, Supabase, Spotify |
-| `packages/types` | Contratos e eventos |
+| Camada              | Responsabilidade                           |
+| ------------------- | ------------------------------------------ |
+| `app/`              | Rotas, layouts, navegação                  |
+| `features/`         | Domínio por produto (auth, player, rooms…) |
+| `shared/`           | UI/helpers reutilizáveis entre features    |
+| `visual/`           | Gráficos GPU/Skia/motion isolados          |
+| `packages/services` | HTTP, Supabase, Spotify                    |
+| `packages/types`    | Contratos e eventos                        |
 
 ## Realtime (Rooms)
 

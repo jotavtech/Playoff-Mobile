@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 // Atlas palette mirrored from src/theme/tokens.ts — keep in sync.
 module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    '../../packages/ui/src/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', '../../packages/ui/src/**/*.{js,jsx,ts,tsx}'],
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
