@@ -1,9 +1,10 @@
 import { useRouter } from 'expo-router';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { Text } from '@playoff/ui';
 import { AtlasHeader } from '@/components/atlas/AtlasHeader';
 import { ScreenContainer } from '@/components/atlas/ScreenContainer';
 import { AiCuratorButton } from '@/components/ai/AiCuratorButton';
+import { Icon } from '@/components/ui/Icon';
 import { ActiveRoundCard } from '@/components/playoff/ActiveRoundCard';
 import { LeaderPlayer } from '@/components/playoff/LeaderPlayer';
 import { RankingRow } from '@/components/playoff/RankingRow';
@@ -13,11 +14,12 @@ import { useActiveRound } from '@/hooks/useRounds';
 import { useAuth } from '@/hooks/useAuth';
 import { usePreviewPlayer } from '@/hooks/usePreviewPlayer';
 import { getLeaderSong } from '@/utils/round';
+import { palette } from '@/theme/tokens';
 import type { RankingItem } from '@playoff/types';
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const { data: round, isLoading, isError, refetch, isRefetching } = useActiveRound();
   const { playingId, toggle } = usePreviewPlayer();
 
@@ -95,9 +97,33 @@ export default function HomeScreen() {
             </View>
           ) : null}
 
+          {round.status === 'finished' ? (
+            <Pressable
+              onPress={() => router.push(`/result/${round.id}`)}
+              className="border-atlas/40 bg-atlas/10 h-12 flex-row items-center justify-center gap-2 rounded-2xl border active:opacity-90"
+            >
+              <Icon name="trophy" size={16} color={palette.blueGlow} />
+              <Text className="text-atlas-glow text-sm font-bold uppercase tracking-widest">
+                Ver resultado
+              </Text>
+            </Pressable>
+          ) : null}
+
           <AiCuratorButton onPress={() => router.push('/ai-curator')} />
         </>
       )}
+
+      {isAuthenticated ? (
+        <Pressable
+          onPress={() => router.push('/create-round')}
+          className="border-border bg-card h-12 flex-row items-center justify-center gap-2 rounded-2xl border active:opacity-80"
+        >
+          <Icon name="plus" size={16} color={palette.gray} />
+          <Text className="text-foreground text-sm font-bold uppercase tracking-widest">
+            Criar rodada manual
+          </Text>
+        </Pressable>
+      ) : null}
     </ScreenContainer>
   );
 }

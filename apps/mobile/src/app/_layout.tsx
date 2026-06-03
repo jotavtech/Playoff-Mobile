@@ -60,6 +60,11 @@ export default function RootLayout() {
             name="ai-curator"
             options={{ presentation: 'modal', animation: 'slide_from_bottom' }}
           />
+          <Stack.Screen
+            name="create-round"
+            options={{ presentation: 'modal', animation: 'slide_from_bottom' }}
+          />
+          <Stack.Screen name="result/[id]" options={{ animation: 'fade' }} />
         </Stack>
       </AppErrorBoundary>
     </AppProviders>
