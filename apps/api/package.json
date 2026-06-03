@@ -13,6 +13,7 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "db:seed": "tsx src/seed.ts",
+    "db:seed:demo": "tsx prisma/demo-seed.ts",
     "lint": "echo skip"
   },
   "engines": {
