@@ -7,7 +7,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "playoff",
     "userInterfaceStyle": "dark",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.playoff.mobile"
