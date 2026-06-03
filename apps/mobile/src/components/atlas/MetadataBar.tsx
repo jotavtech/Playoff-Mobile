@@ -17,7 +17,11 @@ export function MetadataBar({ items }: MetadataBarProps) {
     <View className="flex-row flex-wrap gap-2">
       {items.map((item) => {
         const color =
-          item.tone === 'live' ? palette.paper : item.tone === 'alert' ? palette.orange : palette.gray;
+          item.tone === 'live'
+            ? palette.paper
+            : item.tone === 'alert'
+              ? palette.orange
+              : palette.gray;
         return (
           <View
             key={`${item.label}-${item.value}`}
@@ -36,7 +40,10 @@ export function MetadataBar({ items }: MetadataBarProps) {
                 backgroundColor: item.tone === 'alert' ? palette.orange : palette.grayWeak,
               }}
             />
-            <Text className="font-mono text-[9px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
+            <Text
+              className="font-mono text-[9px] uppercase"
+              style={{ color: palette.grayWeak, letterSpacing: 2.4 }}
+            >
               {item.label}
             </Text>
             <Text className="font-mono text-[10px] uppercase" style={{ color, letterSpacing: 2.2 }}>

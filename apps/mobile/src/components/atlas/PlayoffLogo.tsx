@@ -17,7 +17,10 @@ export function PlayoffLogo({ compact = false, kicker = 'ATLAS ECOSYSTEM' }: Pla
         >
           {kicker}
         </Text>
-        <Text className="font-mono text-[10px]" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
+        <Text
+          className="font-mono text-[10px]"
+          style={{ color: palette.grayWeak, letterSpacing: 2.4 }}
+        >
           NODE_27.12
         </Text>
       </View>

@@ -113,7 +113,11 @@ export function VisualShell({
         contentContainerStyle={{ ...contentStyle, gap: 18 }}
         refreshControl={
           onRefresh ? (
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={palette.gray} />
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={palette.gray}
+            />
           ) : undefined
         }
       >

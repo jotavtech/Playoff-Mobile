@@ -15,7 +15,10 @@ export function AtlasHeader({ right, subtitle = 'PLAYOFF MOBILE' }: AtlasHeaderP
     <View className="flex-row items-start justify-between">
       <View className="gap-2">
         <AtlasBadge />
-        <Text className="font-mono text-[11px] uppercase" style={{ color: palette.gray, letterSpacing: 3.1 }}>
+        <Text
+          className="font-mono text-[11px] uppercase"
+          style={{ color: palette.gray, letterSpacing: 3.1 }}
+        >
           {subtitle}
         </Text>
       </View>

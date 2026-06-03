@@ -1,10 +1,11 @@
 import { useRouter } from 'expo-router';
 import { useMemo } from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, Pressable, View } from 'react-native';
 import { Text } from '@playoff/ui';
 import { AtlasHeader } from '@/components/atlas/AtlasHeader';
 import { ScreenContainer } from '@/components/atlas/ScreenContainer';
 import { GlassCard } from '@/components/ui/GlassCard';
+import { Icon } from '@/components/ui/Icon';
 import { EmptyState, ErrorState, LoadingState } from '@/components/ui/States';
 import { VotingCard } from '@/components/playoff/VotingCard';
 import { useActiveRound, useVote } from '@/hooks/useRounds';
@@ -12,6 +13,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useHistory } from '@/hooks/useProfile';
 import { usePreviewPlayer } from '@/hooks/usePreviewPlayer';
 import { formatVotes } from '@/utils/round';
+import { palette } from '@/theme/tokens';
 
 export default function VoteScreen() {
   const router = useRouter();
@@ -106,6 +108,18 @@ export default function VoteScreen() {
               />
             ))}
           </View>
+
+          {finished ? (
+            <Pressable
+              onPress={() => router.push(`/result/${round.id}`)}
+              className="bg-atlas h-14 flex-row items-center justify-center gap-2 rounded-2xl active:opacity-90"
+            >
+              <Icon name="trophy" size={18} color={palette.white} />
+              <Text className="text-sm font-bold uppercase tracking-widest text-white">
+                Ver resultado completo
+              </Text>
+            </Pressable>
+          ) : null}
         </>
       )}
     </ScreenContainer>

@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { Text } from '@playoff/ui';
 import { AtlasHeader } from '@/components/atlas/AtlasHeader';
 import { EditorialPanel } from '@/components/atlas/EditorialPanel';
@@ -7,6 +7,7 @@ import { MetadataBar } from '@/components/atlas/MetadataBar';
 import { PlayoffLogo } from '@/components/atlas/PlayoffLogo';
 import { VisualShell } from '@/components/atlas/VisualShell';
 import { AiCuratorButton } from '@/components/ai/AiCuratorButton';
+import { Icon } from '@/components/ui/Icon';
 import { ActiveRoundCard } from '@/components/playoff/ActiveRoundCard';
 import { LeaderPlayer } from '@/components/playoff/LeaderPlayer';
 import { RankingRow } from '@/components/playoff/RankingRow';
@@ -15,13 +16,13 @@ import { ErrorState, LoadingState } from '@/components/ui/States';
 import { useActiveRound } from '@/hooks/useRounds';
 import { useAuth } from '@/hooks/useAuth';
 import { usePreviewPlayer } from '@/hooks/usePreviewPlayer';
-import { palette } from '@/theme/tokens';
 import { getLeaderSong } from '@/utils/round';
+import { palette } from '@/theme/tokens';
 import type { RankingItem } from '@playoff/types';
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const { data: round, isLoading, isError, refetch, isRefetching } = useActiveRound();
   const { playingId, toggle } = usePreviewPlayer();
 
@@ -42,7 +43,11 @@ export default function HomeScreen() {
 
   const homeMetadata = [
     { label: 'USER', value: greetingName.toUpperCase().slice(0, 12) },
-    { label: 'ROUND', value: round ? 'LIVE' : 'STANDBY', tone: round ? ('live' as const) : undefined },
+    {
+      label: 'ROUND',
+      value: round ? 'LIVE' : 'STANDBY',
+      tone: round ? ('live' as const) : undefined,
+    },
     { label: 'TRACKS', value: String(round?.songs.length ?? 0) },
   ];
 
@@ -74,16 +79,32 @@ export default function HomeScreen() {
             : 'Crie uma batalha musical com o Atlas AI Curator ou aguarde a proxima sala abrir.'}
         </Text>
         <View className="flex-row gap-2">
-          <View className="flex-1 border px-2 py-2" style={{ borderColor: 'rgba(255,59,31,0.38)', borderRadius: 2 }}>
-            <Text className="font-mono text-[10px] uppercase" style={{ color: palette.orange, letterSpacing: 2.4 }}>
+          <View
+            className="flex-1 border px-2 py-2"
+            style={{ borderColor: 'rgba(255,59,31,0.38)', borderRadius: 2 }}
+          >
+            <Text
+              className="font-mono text-[10px] uppercase"
+              style={{ color: palette.orange, letterSpacing: 2.4 }}
+            >
               LEADER
             </Text>
-            <Text numberOfLines={1} className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper }}>
+            <Text
+              numberOfLines={1}
+              className="mt-1 text-[11px] font-bold uppercase"
+              style={{ color: palette.paper }}
+            >
               {leader?.title ?? 'pending'}
             </Text>
           </View>
-          <View className="flex-1 border px-2 py-2" style={{ borderColor: 'rgba(242,238,231,0.12)', borderRadius: 2 }}>
-            <Text className="font-mono text-[10px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
+          <View
+            className="flex-1 border px-2 py-2"
+            style={{ borderColor: 'rgba(242,238,231,0.12)', borderRadius: 2 }}
+          >
+            <Text
+              className="font-mono text-[10px] uppercase"
+              style={{ color: palette.grayWeak, letterSpacing: 2.4 }}
+            >
               VOTES
             </Text>
             <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper }}>
@@ -103,7 +124,10 @@ export default function HomeScreen() {
       ) : !round ? (
         <EditorialPanel index="00" eyebrow="empty_stage">
           <View className="gap-3">
-            <Text className="text-2xl font-black uppercase leading-7" style={{ color: palette.paper }}>
+            <Text
+              className="text-2xl font-black uppercase leading-7"
+              style={{ color: palette.paper }}
+            >
               Nenhuma rodada ativa
             </Text>
             <Text className="text-sm leading-5" style={{ color: palette.gray }}>
@@ -127,16 +151,25 @@ export default function HomeScreen() {
 
           {top3.length > 0 ? (
             <View className="gap-3">
-              <View className="flex-row items-end justify-between border-b pb-2" style={{ borderBottomColor: 'rgba(242,238,231,0.08)' }}>
+              <View
+                className="flex-row items-end justify-between border-b pb-2"
+                style={{ borderBottomColor: 'rgba(242,238,231,0.08)' }}
+              >
                 <View>
-                  <Text className="font-mono text-[10px] uppercase" style={{ color: palette.orange, letterSpacing: 2.6 }}>
+                  <Text
+                    className="font-mono text-[10px] uppercase"
+                    style={{ color: palette.orange, letterSpacing: 2.6 }}
+                  >
                     02 / ranking
                   </Text>
                   <Text className="text-base font-black uppercase" style={{ color: palette.paper }}>
                     Placar da rodada
                   </Text>
                 </View>
-                <Text className="font-mono text-[10px] font-bold uppercase" style={{ color: palette.grayWeak }}>
+                <Text
+                  className="font-mono text-[10px] font-bold uppercase"
+                  style={{ color: palette.grayWeak }}
+                >
                   top 03
                 </Text>
               </View>
@@ -146,9 +179,41 @@ export default function HomeScreen() {
             </View>
           ) : null}
 
+          {round.status === 'finished' ? (
+            <Pressable
+              onPress={() => router.push(`/result/${round.id}`)}
+              className="h-12 flex-row items-center justify-center gap-2 border active:opacity-90"
+              style={{ borderColor: 'rgba(242,238,231,0.16)', borderRadius: 2 }}
+            >
+              <Icon name="trophy" size={16} color={palette.orange} />
+              <Text
+                className="text-sm font-bold uppercase tracking-widest"
+                style={{ color: palette.paper }}
+              >
+                Ver resultado
+              </Text>
+            </Pressable>
+          ) : null}
+
           <AiCuratorButton onPress={() => router.push('/ai-curator')} />
         </>
       )}
+
+      {isAuthenticated ? (
+        <Pressable
+          onPress={() => router.push('/create-round')}
+          className="h-12 flex-row items-center justify-center gap-2 border active:opacity-80"
+          style={{ borderColor: 'rgba(242,238,231,0.12)', borderRadius: 2 }}
+        >
+          <Icon name="plus" size={16} color={palette.gray} />
+          <Text
+            className="text-sm font-bold uppercase tracking-widest"
+            style={{ color: palette.paper }}
+          >
+            Criar rodada manual
+          </Text>
+        </Pressable>
+      ) : null}
     </VisualShell>
   );
 }

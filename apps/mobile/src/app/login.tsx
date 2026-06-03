@@ -39,7 +39,10 @@ export default function LoginScreen() {
       <View className="gap-6">
         <View className="flex-row items-start justify-between">
           <AtlasBadge label="PLAYOFF" tone="playoff" status="ENTRY" />
-          <Text className="font-mono text-[10px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
+          <Text
+            className="font-mono text-[10px] uppercase"
+            style={{ color: palette.grayWeak, letterSpacing: 2.4 }}
+          >
             BRT / NODE_02
           </Text>
         </View>
@@ -49,25 +52,47 @@ export default function LoginScreen() {
         </View>
         <MetadataBar items={ACCESS_METADATA} />
 
-        <EditorialPanel index="01" eyebrow="dossier_2026" title="Capa interativa do universo Playoff.">
+        <EditorialPanel
+          index="01"
+          eyebrow="dossier_2026"
+          title="Capa interativa do universo Playoff."
+        >
           <Text className="text-sm leading-6" style={{ color: palette.gray }}>
             Salas ao vivo, voto musical, curadoria Atlas e ranking social em uma interface de
             sistema. Spotify e apenas a chave de acesso.
           </Text>
           <View className="flex-row gap-2">
-            <View className="flex-1 border px-2 py-2" style={{ borderColor: 'rgba(242,238,231,0.12)', borderRadius: 2 }}>
-              <Text className="font-mono text-[10px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
+            <View
+              className="flex-1 border px-2 py-2"
+              style={{ borderColor: 'rgba(242,238,231,0.12)', borderRadius: 2 }}
+            >
+              <Text
+                className="font-mono text-[10px] uppercase"
+                style={{ color: palette.grayWeak, letterSpacing: 2.4 }}
+              >
                 ORIGIN
               </Text>
-              <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.paper, letterSpacing: 1.5 }}>
+              <Text
+                className="mt-1 text-[11px] font-bold uppercase"
+                style={{ color: palette.paper, letterSpacing: 1.5 }}
+              >
                 ATLAS / BR
               </Text>
             </View>
-            <View className="flex-1 border px-2 py-2" style={{ borderColor: 'rgba(255,59,31,0.38)', borderRadius: 2 }}>
-              <Text className="font-mono text-[10px] uppercase" style={{ color: palette.grayWeak, letterSpacing: 2.4 }}>
+            <View
+              className="flex-1 border px-2 py-2"
+              style={{ borderColor: 'rgba(255,59,31,0.38)', borderRadius: 2 }}
+            >
+              <Text
+                className="font-mono text-[10px] uppercase"
+                style={{ color: palette.grayWeak, letterSpacing: 2.4 }}
+              >
                 STATUS
               </Text>
-              <Text className="mt-1 text-[11px] font-bold uppercase" style={{ color: palette.orange, letterSpacing: 1.5 }}>
+              <Text
+                className="mt-1 text-[11px] font-bold uppercase"
+                style={{ color: palette.orange, letterSpacing: 1.5 }}
+              >
                 AVAILABLE
               </Text>
             </View>
@@ -94,7 +119,11 @@ export default function LoginScreen() {
           </View>
 
           {!ready ? (
-            <Text variant="caption" className="text-center font-mono" style={{ color: palette.orange }}>
+            <Text
+              variant="caption"
+              className="text-center font-mono"
+              style={{ color: palette.orange }}
+            >
               Configure EXPO_PUBLIC_SPOTIFY_CLIENT_ID para ativar o login Spotify.
             </Text>
           ) : null}
@@ -107,7 +136,10 @@ export default function LoginScreen() {
 
         <View className="gap-2 border-t pt-3" style={{ borderTopColor: 'rgba(242,238,231,0.08)' }}>
           <MetadataBar items={SYSTEM_METADATA} />
-          <Text className="font-mono text-[10px] leading-5" style={{ color: palette.grayWeak, letterSpacing: 1.8 }}>
+          <Text
+            className="font-mono text-[10px] leading-5"
+            style={{ color: palette.grayWeak, letterSpacing: 1.8 }}
+          >
             GUEST MODE libera leitura da rodada. VOTO / HISTORICO / ROOMS persistentes exigem login.
           </Text>
         </View>

@@ -33,12 +33,22 @@ export function PrimaryCTA({ label, icon = 'arrow-right', loading, disabled, ...
         }}
       >
         <View className="flex-row items-center gap-3">
-          {loading ? <ActivityIndicator color={palette.paper} /> : <Icon name={icon} size={20} color={palette.paper} />}
-          <Text className="text-xs font-black uppercase" style={{ color: palette.paper, letterSpacing: 2.8 }}>
+          {loading ? (
+            <ActivityIndicator color={palette.paper} />
+          ) : (
+            <Icon name={icon} size={20} color={palette.paper} />
+          )}
+          <Text
+            className="text-xs font-black uppercase"
+            style={{ color: palette.paper, letterSpacing: 2.8 }}
+          >
             {label}
           </Text>
         </View>
-        <Text className="font-mono text-[10px]" style={{ color: palette.orange, letterSpacing: 2.4 }}>
+        <Text
+          className="font-mono text-[10px]"
+          style={{ color: palette.orange, letterSpacing: 2.4 }}
+        >
           ENTER
         </Text>
       </View>
@@ -69,7 +79,10 @@ export function SecondaryCTA({ label, icon = 'external', disabled, ...props }: C
       >
         <View className="flex-row items-center gap-3">
           <Icon name={icon} size={18} color={palette.gray} />
-          <Text className="text-xs font-bold uppercase" style={{ color: palette.gray, letterSpacing: 2.6 }}>
+          <Text
+            className="text-xs font-bold uppercase"
+            style={{ color: palette.gray, letterSpacing: 2.6 }}
+          >
             {label}
           </Text>
         </View>
