@@ -12,6 +12,8 @@ export const QUERY_KEYS = {
   activeRound: ['rounds', 'active'] as const,
   rounds: ['rounds'] as const,
   round: (id: string) => ['rounds', id] as const,
+  /** Shared root prefix for every ranking scope — invalidate this to refresh them all. */
+  rankings: ['ranking'] as const,
   ranking: (scope: string, id?: string) =>
     id ? (['ranking', scope, id] as const) : (['ranking', scope] as const),
   search: (q: string) => ['spotify', 'search', q] as const,
