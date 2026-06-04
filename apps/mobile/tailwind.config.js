@@ -3,6 +3,9 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', '../../packages/ui/src/**/*.{js,jsx,ts,tsx}'],
   presets: [require('nativewind/preset')],
+  // App is dark-only (userInterfaceStyle: "dark"). Class-based dark mode lets
+  // NativeWind set the scheme instead of throwing on the 'media' default.
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
