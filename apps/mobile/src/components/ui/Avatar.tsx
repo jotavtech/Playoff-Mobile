@@ -21,7 +21,10 @@ export function Avatar({ uri, name, size = 48, ring = false }: AvatarProps) {
   const radius = size / 2;
   return (
     <View
+      accessible
       style={{ width: size, height: size, borderRadius: radius }}
+      accessibilityRole="image"
+      accessibilityLabel={name ? `Foto de ${name}` : 'Foto de perfil'}
       className={`bg-card-elevated items-center justify-center overflow-hidden ${ring ? 'border-atlas/60 border-2' : 'border-border border'}`}
     >
       {uri ? (

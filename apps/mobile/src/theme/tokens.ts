@@ -41,7 +41,26 @@ export const palette = {
   grayWeak: '#736C63',
   success: '#BDB5AA',
   danger: '#FF3B1F',
+  /** Podium gold (1st place). */
+  medalGold: '#FFD56B',
+  /** Podium silver (2nd place). */
+  medalSilver: '#C9D1D9',
+  /** Podium bronze (3rd place). */
+  medalBronze: '#E0935B',
 } as const;
+
+/**
+ * Compose an `rgba(r,g,b,a)` string from a `#RRGGBB` hex and an alpha (0–1).
+ * Output uses no internal spaces to stay byte-for-byte compatible with the
+ * hand-written rgba strings the design system shipped with.
+ */
+export const withAlpha = (hex: string, alpha: number): string => {
+  const normalized = hex.replace('#', '');
+  const r = parseInt(normalized.slice(0, 2), 16);
+  const g = parseInt(normalized.slice(2, 4), 16);
+  const b = parseInt(normalized.slice(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+};
 
 export const visualTheme = {
   surface: palette.ink,

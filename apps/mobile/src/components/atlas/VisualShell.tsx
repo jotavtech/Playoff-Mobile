@@ -3,7 +3,7 @@ import { type ReactNode } from 'react';
 import { RefreshControl, ScrollView, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSettingsStore } from '@/store/settings.store';
-import { accentPalettes, palette } from '@/theme/tokens';
+import { accentPalettes, palette, withAlpha } from '@/theme/tokens';
 import { AccentOrb } from './AccentOrb';
 import { GridOverlay } from './GridOverlay';
 
@@ -53,16 +53,16 @@ export function VisualShell({
         style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
       />
       <AccentOrb
-        color="rgba(255,59,31,0.24)"
-        secondaryColor="rgba(255,59,31,0.04)"
+        color={withAlpha(palette.orange, 0.24)}
+        secondaryColor={withAlpha(palette.orange, 0.04)}
         size={520}
         top={118}
         right={-180}
         opacity={lowEndMode ? 0.08 : 0.2}
       />
       <AccentOrb
-        color="rgba(242,238,231,0.04)"
-        secondaryColor="rgba(255,59,31,0.08)"
+        color={withAlpha(palette.paper, 0.04)}
+        secondaryColor={withAlpha(palette.orange, 0.08)}
         size={420}
         bottom={68}
         left={-220}
@@ -78,8 +78,8 @@ export function VisualShell({
           height: 76,
           borderTopWidth: 1,
           borderBottomWidth: 1,
-          borderColor: 'rgba(242,238,231,0.055)',
-          backgroundColor: 'rgba(242,238,231,0.012)',
+          borderColor: withAlpha(palette.paper, 0.055),
+          backgroundColor: withAlpha(palette.paper, 0.012),
           transform: [{ rotate: '-4deg' }],
         }}
       />

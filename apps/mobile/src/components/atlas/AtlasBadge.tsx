@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { Text } from '@playoff/ui';
-import { palette } from '@/theme/tokens';
+import { palette, withAlpha } from '@/theme/tokens';
 
 type AtlasBadgeProps = {
   label?: string;
@@ -21,8 +21,8 @@ export function AtlasBadge({
       className="flex-row items-center gap-2 self-start px-2 py-1"
       style={{
         borderWidth: 1,
-        borderColor: 'rgba(242,238,231,0.1)',
-        backgroundColor: 'rgba(7,7,7,0.62)',
+        borderColor: withAlpha(palette.paper, 0.1),
+        backgroundColor: withAlpha(palette.black, 0.62),
         borderRadius: 2,
       }}
     >

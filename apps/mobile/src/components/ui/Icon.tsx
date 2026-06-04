@@ -38,7 +38,15 @@ export function Icon({ name, size = 24, color = palette.white, filled = false }:
   };
 
   return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
+    // Icons are decorative: the labelled control or adjacent text carries meaning.
+    // Hidden from assistive tech so screen readers don't announce a bare glyph.
+    <Svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      accessibilityElementsHidden
+      importantForAccessibility="no"
+    >
       {renderPaths(name, color, filled, common)}
     </Svg>
   );

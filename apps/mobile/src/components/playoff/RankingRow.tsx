@@ -6,7 +6,7 @@ import { Icon } from '@/components/ui/Icon';
 import { formatVotes } from '@/utils/round';
 import { palette } from '@/theme/tokens';
 
-const MEDAL = ['#FFD56B', '#C9D1D9', '#E0935B'];
+const MEDAL = [palette.medalGold, palette.medalSilver, palette.medalBronze];
 
 export function RankingRow({ item }: { item: RankingItem }) {
   const medal = item.position <= 3 ? MEDAL[item.position - 1] : undefined;

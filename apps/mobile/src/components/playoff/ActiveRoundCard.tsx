@@ -14,6 +14,8 @@ export function ActiveRoundCard({ round, onPress }: ActiveRoundCardProps) {
   return (
     <Pressable
       onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={`Abrir rodada ${round.title}`}
       className="border-atlas/30 bg-card-elevated overflow-hidden rounded-3xl border p-5 active:opacity-90"
     >
       <View className="flex-row items-center justify-between">

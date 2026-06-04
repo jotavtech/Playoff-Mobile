@@ -28,6 +28,9 @@ module.exports = {
         'muted-weak': '#736C63',
         success: '#BDB5AA',
         danger: '#FF3B1F',
+        'medal-gold': '#FFD56B',
+        'medal-silver': '#C9D1D9',
+        'medal-bronze': '#E0935B',
       },
       borderRadius: {
         sm: '4px',
