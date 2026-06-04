@@ -18,18 +18,89 @@ interface SeedSong {
   popularity: number;
 }
 
-const cover = (seed: string): string =>
-  `https://picsum.photos/seed/${seed}/600/600`;
+const cover = (seed: string): string => `https://picsum.photos/seed/${seed}/600/600`;
 
 const SONGS: SeedSong[] = [
-  { spotifyTrackId: 'demo-1', title: 'Aquarela do Brasil', artist: 'Ary Barroso', album: 'Clássicos', coverUrl: cover('aquarela'), externalUrl: 'https://open.spotify.com/track/demo-1', durationMs: 198000, popularity: 82 },
-  { spotifyTrackId: 'demo-2', title: 'Garota de Ipanema', artist: 'Tom Jobim', album: 'Bossa Nova', coverUrl: cover('ipanema'), externalUrl: 'https://open.spotify.com/track/demo-2', durationMs: 215000, popularity: 88 },
-  { spotifyTrackId: 'demo-3', title: 'Evidências', artist: 'Chitãozinho & Xororó', album: 'Sertanejo', coverUrl: cover('evidencias'), externalUrl: 'https://open.spotify.com/track/demo-3', durationMs: 271000, popularity: 90 },
-  { spotifyTrackId: 'demo-4', title: 'Tim Maia — Descobridor', artist: 'Tim Maia', album: 'Soul', coverUrl: cover('timmaia'), externalUrl: 'https://open.spotify.com/track/demo-4', durationMs: 240000, popularity: 79 },
-  { spotifyTrackId: 'demo-5', title: 'Sweet Child O Mine', artist: "Guns N' Roses", album: 'Appetite', coverUrl: cover('sweetchild'), externalUrl: 'https://open.spotify.com/track/demo-5', durationMs: 356000, popularity: 91 },
-  { spotifyTrackId: 'demo-6', title: 'Bohemian Rhapsody', artist: 'Queen', album: 'A Night at the Opera', coverUrl: cover('bohemian'), externalUrl: 'https://open.spotify.com/track/demo-6', durationMs: 354000, popularity: 95 },
-  { spotifyTrackId: 'demo-7', title: 'Blinding Lights', artist: 'The Weeknd', album: 'After Hours', coverUrl: cover('blinding'), externalUrl: 'https://open.spotify.com/track/demo-7', durationMs: 200000, popularity: 96 },
-  { spotifyTrackId: 'demo-8', title: 'As It Was', artist: 'Harry Styles', album: "Harry's House", coverUrl: cover('asitwas'), externalUrl: 'https://open.spotify.com/track/demo-8', durationMs: 167000, popularity: 93 },
+  {
+    spotifyTrackId: 'demo-1',
+    title: 'Aquarela do Brasil',
+    artist: 'Ary Barroso',
+    album: 'Clássicos',
+    coverUrl: cover('aquarela'),
+    externalUrl: 'https://open.spotify.com/track/demo-1',
+    durationMs: 198000,
+    popularity: 82,
+  },
+  {
+    spotifyTrackId: 'demo-2',
+    title: 'Garota de Ipanema',
+    artist: 'Tom Jobim',
+    album: 'Bossa Nova',
+    coverUrl: cover('ipanema'),
+    externalUrl: 'https://open.spotify.com/track/demo-2',
+    durationMs: 215000,
+    popularity: 88,
+  },
+  {
+    spotifyTrackId: 'demo-3',
+    title: 'Evidências',
+    artist: 'Chitãozinho & Xororó',
+    album: 'Sertanejo',
+    coverUrl: cover('evidencias'),
+    externalUrl: 'https://open.spotify.com/track/demo-3',
+    durationMs: 271000,
+    popularity: 90,
+  },
+  {
+    spotifyTrackId: 'demo-4',
+    title: 'Tim Maia — Descobridor',
+    artist: 'Tim Maia',
+    album: 'Soul',
+    coverUrl: cover('timmaia'),
+    externalUrl: 'https://open.spotify.com/track/demo-4',
+    durationMs: 240000,
+    popularity: 79,
+  },
+  {
+    spotifyTrackId: 'demo-5',
+    title: 'Sweet Child O Mine',
+    artist: "Guns N' Roses",
+    album: 'Appetite',
+    coverUrl: cover('sweetchild'),
+    externalUrl: 'https://open.spotify.com/track/demo-5',
+    durationMs: 356000,
+    popularity: 91,
+  },
+  {
+    spotifyTrackId: 'demo-6',
+    title: 'Bohemian Rhapsody',
+    artist: 'Queen',
+    album: 'A Night at the Opera',
+    coverUrl: cover('bohemian'),
+    externalUrl: 'https://open.spotify.com/track/demo-6',
+    durationMs: 354000,
+    popularity: 95,
+  },
+  {
+    spotifyTrackId: 'demo-7',
+    title: 'Blinding Lights',
+    artist: 'The Weeknd',
+    album: 'After Hours',
+    coverUrl: cover('blinding'),
+    externalUrl: 'https://open.spotify.com/track/demo-7',
+    durationMs: 200000,
+    popularity: 96,
+  },
+  {
+    spotifyTrackId: 'demo-8',
+    title: 'As It Was',
+    artist: 'Harry Styles',
+    album: "Harry's House",
+    coverUrl: cover('asitwas'),
+    externalUrl: 'https://open.spotify.com/track/demo-8',
+    durationMs: 167000,
+    popularity: 93,
+  },
 ];
 
 const USERS = [
@@ -121,14 +192,24 @@ async function main(): Promise<void> {
 
   // 3) Badges + award some to the demo user
   const badgeDefs = [
-    { name: 'Primeiro Voto', description: 'Você votou pela primeira vez em uma rodada.', icon: '🎵' },
-    { name: 'Bom de Palpite', description: 'Você acertou a música vencedora de uma rodada.', icon: '🏆' },
-    { name: 'Curador Atlas', description: 'Você criou a sua primeira rodada de votação.', icon: '🎧' },
+    {
+      name: 'Primeiro Voto',
+      description: 'Você votou pela primeira vez em uma rodada.',
+      icon: '🎵',
+    },
+    {
+      name: 'Bom de Palpite',
+      description: 'Você acertou a música vencedora de uma rodada.',
+      icon: '🏆',
+    },
+    {
+      name: 'Curador Atlas',
+      description: 'Você criou a sua primeira rodada de votação.',
+      icon: '🎧',
+    },
   ];
   const badges = await Promise.all(
-    badgeDefs.map((b) =>
-      prisma.badge.upsert({ where: { name: b.name }, create: b, update: b }),
-    ),
+    badgeDefs.map((b) => prisma.badge.upsert({ where: { name: b.name }, create: b, update: b })),
   );
   await prisma.userBadge.createMany({
     data: badges.map((b) => ({ userId: owner.id, badgeId: b.id })),
