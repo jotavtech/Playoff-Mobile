@@ -71,12 +71,12 @@ export default function HomeScreen() {
       <EditorialPanel
         index="01"
         eyebrow={round ? 'active room signal' : 'atlas standby'}
-        title={round ? 'A rodada entrou em disputa.' : 'Sem rodada ativa, mas o palco esta armado.'}
+        title={round ? 'A rodada entrou em disputa.' : 'Sem rodada ativa, mas o palco está armado.'}
       >
         <Text className="text-sm leading-5" style={{ color: palette.gray }}>
           {round
-            ? 'Painel de controle da rodada: lider, ranking, voto e curadoria Atlas no mesmo grid tecnico.'
-            : 'Crie uma batalha musical com o Atlas AI Curator ou aguarde a proxima sala abrir.'}
+            ? 'Painel de controle da rodada: líder, ranking, voto e curadoria Atlas no mesmo grid técnico.'
+            : 'Crie uma batalha musical com o Atlas AI Curator ou aguarde a próxima sala abrir.'}
         </Text>
         <View className="flex-row gap-2">
           <View
@@ -118,7 +118,7 @@ export default function HomeScreen() {
         <LoadingState message="Carregando rodada..." />
       ) : isError ? (
         <ErrorState
-          message="Nao foi possivel carregar a rodada ativa."
+          message="Não foi possível carregar a rodada ativa."
           onRetry={() => void refetch()}
         />
       ) : !round ? (
@@ -131,8 +131,8 @@ export default function HomeScreen() {
               Nenhuma rodada ativa
             </Text>
             <Text className="text-sm leading-5" style={{ color: palette.gray }}>
-              O palco esta em espera. Acione o Atlas Curator para montar uma disputa com cara de
-              sistema social, nao de playlist.
+              O palco está em espera. Acione o Atlas Curator para montar uma disputa com cara de
+              sistema social, não de playlist.
             </Text>
             <AiCuratorButton onPress={() => router.push('/ai-curator')} />
           </View>
@@ -140,11 +140,33 @@ export default function HomeScreen() {
       ) : (
         <>
           {leader ? (
-            <LeaderPlayer
-              song={leader}
-              isPlaying={playingId === leader.id}
-              onTogglePreview={() => void toggle(leader.id, leader.previewUrl)}
-            />
+            <>
+              <LeaderPlayer
+                song={leader}
+                isPlaying={playingId === leader.id}
+                onTogglePreview={() => void toggle(leader.id, leader.previewUrl)}
+              />
+              <Pressable
+                onPress={() => router.push(`/cinematic/${round.id}`)}
+                className="h-11 flex-row items-center justify-center gap-2 border active:opacity-90"
+                style={{ borderColor: 'rgba(255,59,31,0.38)', borderRadius: 2 }}
+                accessibilityRole="button"
+              >
+                <Icon name="sparkles" size={15} color={palette.orange} />
+                <Text
+                  className="text-xs font-bold uppercase"
+                  style={{ color: palette.paper, letterSpacing: 2.4 }}
+                >
+                  Modo cinema
+                </Text>
+                <Text
+                  className="font-mono text-[10px] uppercase"
+                  style={{ color: palette.orange, letterSpacing: 2.4 }}
+                >
+                  EXPAND
+                </Text>
+              </Pressable>
+            </>
           ) : null}
 
           <ActiveRoundCard round={round} onPress={() => router.push('/vote')} />

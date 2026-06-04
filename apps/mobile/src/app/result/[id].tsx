@@ -107,6 +107,16 @@ export default function ResultScreen() {
           </View>
 
           <Pressable
+            onPress={() => router.push(`/cinematic/${round.id}`)}
+            className="border-border bg-card-elevated h-14 flex-row items-center justify-center gap-2 rounded-2xl border active:opacity-90"
+          >
+            <Icon name="sparkles" size={18} color={palette.orange} />
+            <Text className="text-foreground text-sm font-bold uppercase tracking-widest">
+              Abrir em modo cinema
+            </Text>
+          </Pressable>
+
+          <Pressable
             onPress={() => router.replace('/create-round')}
             className="bg-playoff h-14 flex-row items-center justify-center gap-2 rounded-2xl active:opacity-90"
           >

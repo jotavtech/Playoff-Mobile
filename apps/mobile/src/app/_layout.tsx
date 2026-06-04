@@ -64,7 +64,15 @@ export default function RootLayout() {
             name="create-round"
             options={{ presentation: 'modal', animation: 'slide_from_bottom' }}
           />
+          <Stack.Screen
+            name="atlas"
+            options={{ presentation: 'modal', animation: 'slide_from_bottom' }}
+          />
           <Stack.Screen name="result/[id]" options={{ animation: 'fade' }} />
+          <Stack.Screen
+            name="cinematic/[id]"
+            options={{ animation: 'fade', presentation: 'fullScreenModal' }}
+          />
         </Stack>
       </AppErrorBoundary>
     </AppProviders>
