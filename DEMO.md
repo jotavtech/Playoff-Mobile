@@ -10,8 +10,8 @@ Histórico, Perfil) já vêm cheias e o login fica automático.
 
 ```powershell
 cd C:\Users\Atlas\Playoff-Mobile
-git checkout claude/funny-pasteur-cj7ct
-git pull origin claude/funny-pasteur-cj7ct
+# já na branch atual do projeto:
+git pull
 pnpm install
 Set-Content apps\mobile\.env "EXPO_PUBLIC_DEMO_MODE=true"
 cd apps\mobile
@@ -21,7 +21,7 @@ npx.cmd expo start --web -c
 **macOS / Linux:**
 
 ```bash
-cd Playoff-Mobile && git pull origin claude/funny-pasteur-cj7ct && pnpm install
+cd Playoff-Mobile && git pull && pnpm install
 echo "EXPO_PUBLIC_DEMO_MODE=true" > apps/mobile/.env
 cd apps/mobile && npx expo start --web -c
 ```
