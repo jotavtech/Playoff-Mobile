@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Text } from '@playoff/ui';
 import { useSettingsStore } from '@/store/settings.store';
-import { palette } from '@/theme/tokens';
+import { palette, withAlpha } from '@/theme/tokens';
 
 type EditorialPanelProps = {
   index: string;
@@ -42,8 +42,8 @@ export function EditorialPanel({
       style={[
         {
           borderWidth: 1,
-          borderColor: 'rgba(242,238,231,0.12)',
-          backgroundColor: 'rgba(7,7,7,0.72)',
+          borderColor: withAlpha(palette.paper, 0.12),
+          backgroundColor: withAlpha(palette.black, 0.72),
           borderRadius: 2,
         },
         animatedStyle,
@@ -51,7 +51,7 @@ export function EditorialPanel({
     >
       <View
         className="flex-row items-center justify-between border-b px-3 py-2"
-        style={{ borderBottomColor: 'rgba(242,238,231,0.08)' }}
+        style={{ borderBottomColor: withAlpha(palette.paper, 0.08) }}
       >
         <Text
           className="font-mono text-[10px] uppercase"

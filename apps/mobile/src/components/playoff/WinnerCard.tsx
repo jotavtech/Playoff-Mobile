@@ -49,6 +49,8 @@ export function WinnerCard({ song, finished }: WinnerCardProps) {
 
       <Pressable
         onPress={() => void Linking.openURL(song.externalUrl)}
+        accessibilityRole="button"
+        accessibilityLabel={`Abrir ${song.title} no Spotify`}
         className="mt-6 h-12 flex-row items-center justify-center gap-2 self-stretch rounded-2xl bg-[#1DB954] active:opacity-90"
       >
         <Icon name="spotify" size={18} color={palette.white} />

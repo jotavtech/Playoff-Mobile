@@ -26,9 +26,17 @@ export function MusicCard({
   return (
     <Pressable
       onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={`${song.title} — ${song.artist}`}
       className={`flex-row items-center gap-3 rounded-2xl border p-3 active:opacity-90 ${selected ? 'border-playoff bg-playoff/10' : 'border-border bg-card'}`}
     >
-      <Pressable onPress={onTogglePreview} className="active:opacity-80">
+      <Pressable
+        onPress={onTogglePreview}
+        accessibilityRole="button"
+        accessibilityLabel={`${isPlaying ? 'Pausar' : 'Reproduzir'} prévia de ${song.title}`}
+        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        className="active:opacity-80"
+      >
         <Image
           source={{ uri: song.coverUrl }}
           style={{ width: 48, height: 48, borderRadius: 10 }}

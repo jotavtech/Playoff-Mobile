@@ -1,7 +1,7 @@
 import { ActivityIndicator, Pressable, type PressableProps, View } from 'react-native';
 import { Text } from '@playoff/ui';
 import { Icon, type IconName } from '@/components/ui/Icon';
-import { palette } from '@/theme/tokens';
+import { palette, withAlpha } from '@/theme/tokens';
 
 type CTAProps = PressableProps & {
   label: string;
@@ -27,9 +27,9 @@ export function PrimaryCTA({ label, icon = 'arrow-right', loading, disabled, ...
         className="h-full flex-row items-center justify-between px-4"
         style={{
           borderRadius: 2,
-          backgroundColor: 'rgba(7,7,7,0.82)',
+          backgroundColor: withAlpha(palette.black, 0.82),
           borderWidth: 1,
-          borderColor: 'rgba(242,238,231,0.28)',
+          borderColor: withAlpha(palette.paper, 0.28),
         }}
       >
         <View className="flex-row items-center gap-3">
@@ -72,9 +72,9 @@ export function SecondaryCTA({ label, icon = 'external', disabled, ...props }: C
         className="h-full flex-row items-center justify-between px-4"
         style={{
           borderRadius: 6,
-          backgroundColor: 'rgba(7,7,7,0.54)',
+          backgroundColor: withAlpha(palette.black, 0.54),
           borderWidth: 1,
-          borderColor: 'rgba(242,238,231,0.12)',
+          borderColor: withAlpha(palette.paper, 0.12),
         }}
       >
         <View className="flex-row items-center gap-3">

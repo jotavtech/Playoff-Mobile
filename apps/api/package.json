@@ -14,7 +14,7 @@
     "prisma:migrate": "prisma migrate dev",
     "db:seed": "tsx src/seed.ts",
     "db:seed:demo": "tsx prisma/demo-seed.ts",
-    "lint": "echo skip"
+    "lint": "eslint src prisma --ext .ts"
   },
   "engines": {
     "node": ">=20"

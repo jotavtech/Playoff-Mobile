@@ -59,7 +59,7 @@ export default function LoginScreen() {
         >
           <Text className="text-sm leading-6" style={{ color: palette.gray }}>
             Salas ao vivo, voto musical, curadoria Atlas e ranking social em uma interface de
-            sistema. Spotify e apenas a chave de acesso.
+            sistema. Spotify é apenas a chave de acesso.
           </Text>
           <View className="flex-row gap-2">
             <View
@@ -119,13 +119,17 @@ export default function LoginScreen() {
           </View>
 
           {!ready ? (
-            <Text
-              variant="caption"
-              className="text-center font-mono"
-              style={{ color: palette.orange }}
-            >
-              Configure EXPO_PUBLIC_SPOTIFY_CLIENT_ID para ativar o login Spotify.
-            </Text>
+            <View className="gap-1">
+              <Text
+                className="text-center font-mono text-[10px] uppercase"
+                style={{ color: palette.orange, letterSpacing: 2.4 }}
+              >
+                AUTH / UNAVAILABLE
+              </Text>
+              <Text variant="caption" className="text-center" style={{ color: palette.gray }}>
+                Login com Spotify indisponível — configuração ausente. Continue como convidado.
+              </Text>
+            </View>
           ) : null}
           {error ? (
             <Text variant="caption" className="text-center" style={{ color: palette.danger }}>
@@ -140,7 +144,7 @@ export default function LoginScreen() {
             className="font-mono text-[10px] leading-5"
             style={{ color: palette.grayWeak, letterSpacing: 1.8 }}
           >
-            GUEST MODE libera leitura da rodada. VOTO / HISTORICO / ROOMS persistentes exigem login.
+            GUEST MODE libera leitura da rodada. VOTO / HISTORY / ROOMS persistentes exigem login.
           </Text>
         </View>
       </View>

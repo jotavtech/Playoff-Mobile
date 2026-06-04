@@ -36,7 +36,13 @@ export function VotingCard({
   return (
     <View className={`rounded-2xl border p-3 ${highlight}`}>
       <View className="flex-row items-center gap-3">
-        <Pressable onPress={onTogglePreview} className="active:opacity-80">
+        <Pressable
+          onPress={onTogglePreview}
+          accessibilityRole="button"
+          accessibilityLabel={`${isPlaying ? 'Pausar' : 'Reproduzir'} prévia de ${song.title}`}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          className="active:opacity-80"
+        >
           <Image
             source={{ uri: song.coverUrl }}
             style={{ width: 56, height: 56, borderRadius: 12 }}
@@ -77,6 +83,9 @@ export function VotingCard({
             onPress={onVote}
             disabled={disabled}
             accessibilityRole="button"
+            accessibilityLabel={`Votar em ${song.title}`}
+            accessibilityState={{ disabled: Boolean(disabled) }}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             className={`rounded-xl px-4 py-3 ${disabled ? 'bg-card-elevated opacity-60' : 'bg-playoff active:opacity-90'}`}
           >
             <Text className="text-xs font-bold uppercase tracking-widest text-white">Votar</Text>
@@ -90,6 +99,8 @@ export function VotingCard({
           {!song.previewUrl ? (
             <Pressable
               onPress={() => void Linking.openURL(song.externalUrl)}
+              accessibilityRole="button"
+              accessibilityLabel={`Abrir ${song.title} no Spotify`}
               className="flex-row items-center gap-1 self-start active:opacity-70"
             >
               <Icon name="spotify" size={14} color={palette.success} />

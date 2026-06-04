@@ -8,7 +8,6 @@ export const notFoundHandler = (_req: Request, res: Response): void => {
   });
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorHandler = (
   err: unknown,
   _req: Request,
@@ -28,7 +27,7 @@ export const errorHandler = (
   }
 
   // Unknown error — never leak internals/secrets.
-  // eslint-disable-next-line no-console
+
   console.error('[error]', err instanceof Error ? err.message : err);
   res.status(500).json({
     error: { code: 'INTERNAL_ERROR', message: 'Erro interno do servidor.' },

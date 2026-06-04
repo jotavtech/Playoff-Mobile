@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { Text } from '@playoff/ui';
-import { palette } from '@/theme/tokens';
+import { palette, withAlpha } from '@/theme/tokens';
 
 export type MetadataItem = {
   label: string;
@@ -28,8 +28,8 @@ export function MetadataBar({ items }: MetadataBarProps) {
             className="flex-row items-center gap-2 px-2 py-1"
             style={{
               borderWidth: 1,
-              borderColor: 'rgba(242,238,231,0.09)',
-              backgroundColor: 'rgba(7,7,7,0.58)',
+              borderColor: withAlpha(palette.paper, 0.09),
+              backgroundColor: withAlpha(palette.black, 0.58),
               borderRadius: 2,
             }}
           >

@@ -76,16 +76,129 @@ const toSong = (s: RoundSong): Song => ({
 });
 
 // Active round songs
-const sweet = roundSong({ id: 's5', trackId: 'demo-5', title: 'Sweet Child O Mine', artist: "Guns N' Roses", album: 'Appetite', durationMs: 356000, popularity: 91, seed: 'sweetchild' }, 1, 1, 20);
-const bohemian = roundSong({ id: 's6', trackId: 'demo-6', title: 'Bohemian Rhapsody', artist: 'Queen', album: 'A Night at the Opera', durationMs: 354000, popularity: 95, seed: 'bohemian' }, 2, 1, 20);
-const blinding = roundSong({ id: 's7', trackId: 'demo-7', title: 'Blinding Lights', artist: 'The Weeknd', album: 'After Hours', durationMs: 200000, popularity: 96, seed: 'blinding' }, 3, 2, 40);
-const asItWas = roundSong({ id: 's8', trackId: 'demo-8', title: 'As It Was', artist: 'Harry Styles', album: "Harry's House", durationMs: 167000, popularity: 93, seed: 'asitwas' }, 4, 1, 20);
+const sweet = roundSong(
+  {
+    id: 's5',
+    trackId: 'demo-5',
+    title: 'Sweet Child O Mine',
+    artist: "Guns N' Roses",
+    album: 'Appetite',
+    durationMs: 356000,
+    popularity: 91,
+    seed: 'sweetchild',
+  },
+  1,
+  1,
+  20,
+);
+const bohemian = roundSong(
+  {
+    id: 's6',
+    trackId: 'demo-6',
+    title: 'Bohemian Rhapsody',
+    artist: 'Queen',
+    album: 'A Night at the Opera',
+    durationMs: 354000,
+    popularity: 95,
+    seed: 'bohemian',
+  },
+  2,
+  1,
+  20,
+);
+const blinding = roundSong(
+  {
+    id: 's7',
+    trackId: 'demo-7',
+    title: 'Blinding Lights',
+    artist: 'The Weeknd',
+    album: 'After Hours',
+    durationMs: 200000,
+    popularity: 96,
+    seed: 'blinding',
+  },
+  3,
+  2,
+  40,
+);
+const asItWas = roundSong(
+  {
+    id: 's8',
+    trackId: 'demo-8',
+    title: 'As It Was',
+    artist: 'Harry Styles',
+    album: "Harry's House",
+    durationMs: 167000,
+    popularity: 93,
+    seed: 'asitwas',
+  },
+  4,
+  1,
+  20,
+);
 
 // Finished round songs
-const aquarela = roundSong({ id: 's1', trackId: 'demo-1', title: 'Aquarela do Brasil', artist: 'Ary Barroso', album: 'Clássicos', durationMs: 198000, popularity: 82, seed: 'aquarela' }, 1, 1, 20);
-const ipanema = roundSong({ id: 's2', trackId: 'demo-2', title: 'Garota de Ipanema', artist: 'Tom Jobim', album: 'Bossa Nova', durationMs: 215000, popularity: 88, seed: 'ipanema' }, 2, 1, 20);
-const evidencias = roundSong({ id: 's3', trackId: 'demo-3', title: 'Evidências', artist: 'Chitãozinho & Xororó', album: 'Sertanejo', durationMs: 271000, popularity: 90, seed: 'evidencias' }, 3, 3, 60, true);
-const timMaia = roundSong({ id: 's4', trackId: 'demo-4', title: 'Tim Maia — Descobridor', artist: 'Tim Maia', album: 'Soul', durationMs: 240000, popularity: 79, seed: 'timmaia' }, 4, 0, 0);
+const aquarela = roundSong(
+  {
+    id: 's1',
+    trackId: 'demo-1',
+    title: 'Aquarela do Brasil',
+    artist: 'Ary Barroso',
+    album: 'Clássicos',
+    durationMs: 198000,
+    popularity: 82,
+    seed: 'aquarela',
+  },
+  1,
+  1,
+  20,
+);
+const ipanema = roundSong(
+  {
+    id: 's2',
+    trackId: 'demo-2',
+    title: 'Garota de Ipanema',
+    artist: 'Tom Jobim',
+    album: 'Bossa Nova',
+    durationMs: 215000,
+    popularity: 88,
+    seed: 'ipanema',
+  },
+  2,
+  1,
+  20,
+);
+const evidencias = roundSong(
+  {
+    id: 's3',
+    trackId: 'demo-3',
+    title: 'Evidências',
+    artist: 'Chitãozinho & Xororó',
+    album: 'Sertanejo',
+    durationMs: 271000,
+    popularity: 90,
+    seed: 'evidencias',
+  },
+  3,
+  3,
+  60,
+  true,
+);
+const timMaia = roundSong(
+  {
+    id: 's4',
+    trackId: 'demo-4',
+    title: 'Tim Maia — Descobridor',
+    artist: 'Tim Maia',
+    album: 'Soul',
+    durationMs: 240000,
+    popularity: 79,
+    seed: 'timmaia',
+  },
+  4,
+  0,
+  0,
+);
 
 export const demoActiveRound: Round = {
   id: 'round-active',
@@ -137,9 +250,27 @@ const roundRanking = (round: Round): RankingItem[] =>
     }));
 
 export const demoBadges: Badge[] = [
-  { id: 'b1', name: 'Primeiro Voto', description: 'Você votou pela primeira vez em uma rodada.', icon: '🎵', earnedAt: '2026-06-03T23:07:10.714Z' },
-  { id: 'b2', name: 'Bom de Palpite', description: 'Você acertou a música vencedora de uma rodada.', icon: '🏆', earnedAt: '2026-06-03T23:07:10.714Z' },
-  { id: 'b3', name: 'Curador Atlas', description: 'Você criou a sua primeira rodada de votação.', icon: '🎧', earnedAt: '2026-06-03T23:07:10.714Z' },
+  {
+    id: 'b1',
+    name: 'Primeiro Voto',
+    description: 'Você votou pela primeira vez em uma rodada.',
+    icon: '🎵',
+    earnedAt: '2026-06-03T23:07:10.714Z',
+  },
+  {
+    id: 'b2',
+    name: 'Bom de Palpite',
+    description: 'Você acertou a música vencedora de uma rodada.',
+    icon: '🏆',
+    earnedAt: '2026-06-03T23:07:10.714Z',
+  },
+  {
+    id: 'b3',
+    name: 'Curador Atlas',
+    description: 'Você criou a sua primeira rodada de votação.',
+    icon: '🎧',
+    earnedAt: '2026-06-03T23:07:10.714Z',
+  },
 ];
 
 export const demoStats: ProfileStats = { votesCount: 2, roundsCount: 2, correctCount: 1 };
@@ -157,7 +288,12 @@ export const demoHistory: HistoryItem[] = [
   {
     voteId: 'v2',
     round: { id: demoFinishedRound.id, title: demoFinishedRound.title, status: 'finished' },
-    song: { id: 's3', title: 'Evidências', artist: 'Chitãozinho & Xororó', coverUrl: cover('evidencias') },
+    song: {
+      id: 's3',
+      title: 'Evidências',
+      artist: 'Chitãozinho & Xororó',
+      coverUrl: cover('evidencias'),
+    },
     result: 'won',
     createdAt: '2026-06-03T23:07:10.706Z',
   },
@@ -194,7 +330,8 @@ export function getDemoResponse(method: string, path: string): DemoResult {
     if (route === '/me/stats') return hit(demoStats);
     if (route === '/me/badges') return hit({ badges: demoBadges });
     if (route === '/me/history' || route === '/me/votes') return hit({ items: demoHistory });
-    if (route === '/ranking/global' || route === '/ranking/weekly') return hit({ items: demoRankingGlobal });
+    if (route === '/ranking/global' || route === '/ranking/weekly')
+      return hit({ items: demoRankingGlobal });
 
     const rankRound = route.match(/^\/ranking\/round\/(.+)$/);
     if (rankRound) {
@@ -216,11 +353,15 @@ export function getDemoResponse(method: string, path: string): DemoResult {
     if (route === '/auth/logout') return hit({ ok: true });
     if (/^\/rounds\/[^/]+\/vote$/.test(route)) return hit({ round: demoActiveRound });
     if (/^\/rounds\/[^/]+\/(start|finish)$/.test(route)) return hit({ round: demoActiveRound });
-    if (route === '/rounds') return hit({ round: { ...demoActiveRound, id: 'round-new', title: 'Nova Rodada' } });
+    if (route === '/rounds')
+      return hit({ round: { ...demoActiveRound, id: 'round-new', title: 'Nova Rodada' } });
     if (route === '/ai/curator' || route === '/ai/round-suggestion') return hit(aiCurator);
     if (route === '/ai/round-description') return hit({ description: aiCurator.roundDescription });
     if (route === '/ai/result-insight')
-      return hit({ insight: 'Evidências dominou com 60% dos votos — um resultado consistente com sua popularidade duradoura.' });
+      return hit({
+        insight:
+          'Evidências dominou com 60% dos votos — um resultado consistente com sua popularidade duradoura.',
+      });
     if (route === '/ai/share-caption')
       return hit({ caption: 'Acabei de votar no Playoff 🎵 vem disputar o seu hit favorito!' });
   }

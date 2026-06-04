@@ -88,6 +88,32 @@ export default function ProfileScreen() {
           </View>
 
           <Pressable
+            onPress={() => router.push('/atlas')}
+            className="flex-row items-center justify-between border px-4 py-3 active:opacity-80"
+            style={{ borderColor: 'rgba(242,238,231,0.12)', borderRadius: 2 }}
+            accessibilityRole="button"
+          >
+            <View className="flex-row items-center gap-3">
+              <Icon name="sparkles" size={16} color={palette.gray} />
+              <View>
+                <Text
+                  className="text-[13px] font-bold uppercase tracking-widest"
+                  style={{ color: palette.paper }}
+                >
+                  Sobre o Atlas
+                </Text>
+                <Text
+                  className="font-mono text-[10px] uppercase"
+                  style={{ color: palette.grayWeak, letterSpacing: 2.4 }}
+                >
+                  SYSTEM INFO
+                </Text>
+              </View>
+            </View>
+            <Icon name="arrow-right" size={16} color={palette.grayWeak} />
+          </Pressable>
+
+          <Pressable
             onPress={() => void logout()}
             className="border-border bg-card mt-2 items-center rounded-xl border px-5 py-3 active:opacity-80"
           >

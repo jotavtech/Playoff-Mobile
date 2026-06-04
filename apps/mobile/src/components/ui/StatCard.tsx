@@ -11,7 +11,11 @@ export function StatCard({ value, label, tone = 'neutral' }: StatCardProps) {
   const valueColor =
     tone === 'atlas' ? 'text-atlas-glow' : tone === 'playoff' ? 'text-playoff' : 'text-foreground';
   return (
-    <View className="border-border bg-card flex-1 items-center rounded-2xl border px-3 py-4">
+    <View
+      accessible
+      accessibilityLabel={`${value} ${label}`}
+      className="border-border bg-card flex-1 items-center rounded-2xl border px-3 py-4"
+    >
       <Text className={`text-2xl font-extrabold ${valueColor}`}>{value}</Text>
       <Text className="text-muted mt-1 text-center text-[11px] font-medium uppercase tracking-wider">
         {label}
