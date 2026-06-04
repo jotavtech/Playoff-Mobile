@@ -7,6 +7,8 @@ export const env = {
   appEnv: process.env.EXPO_PUBLIC_APP_ENV ?? 'development',
   /** Atlas backend base URL. */
   apiUrl: process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:3333',
+  /** Offline demo mode — serve bundled fixtures, no backend required. */
+  demoMode: process.env.EXPO_PUBLIC_DEMO_MODE === 'true',
   /** Public Spotify client id — used for the PKCE auth request only. */
   spotifyClientId: process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID ?? '',
   spotifyRedirectUri: process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URI ?? 'playoff://auth/callback',

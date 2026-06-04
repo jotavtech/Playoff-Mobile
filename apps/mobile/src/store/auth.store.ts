@@ -1,9 +1,10 @@
-import { STORAGE_KEYS } from '@playoff/config';
+import { STORAGE_KEYS, env } from '@playoff/config';
 import type { User } from '@playoff/types';
 import { create } from 'zustand';
 import { deleteSecureItem, getSecureItem, setSecureItem } from '@/lib/secure-store';
 import { authService } from '@/services/auth.service';
 import { setApiToken } from '@/services/api';
+import { demoUser } from '@/services/demo-data';
 
 type AuthStatus = 'loading' | 'authenticated' | 'unauthenticated';
 
@@ -26,6 +27,13 @@ export const useAuthStore = create<AuthState>((set) => ({
   isGuest: false,
 
   hydrate: async () => {
+    // Demo mode: sign in automatically with the bundled demo user.
+    if (env.demoMode) {
+      setApiToken('demo-token');
+      set({ status: 'authenticated', token: 'demo-token', user: demoUser, isGuest: false });
+      return;
+    }
+
     const token = await getSecureItem(STORAGE_KEYS.authToken);
     if (!token) {
       set({ status: 'unauthenticated', token: null, user: null });

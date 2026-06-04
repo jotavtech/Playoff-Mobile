@@ -1,4 +1,5 @@
 import { env } from '@playoff/config';
+import { getDemoResponse } from './demo-data';
 
 /** Error thrown for any non-2xx Atlas backend response. */
 export class ApiError extends Error {
@@ -30,6 +31,17 @@ type RequestOptions = {
 
 async function request<T>(path: string, options: RequestOptions = {}): Promise<T> {
   const { method = 'GET', body, auth = true, signal } = options;
+
+  // Offline demo mode: serve bundled fixtures, never touch the network.
+  if (env.demoMode) {
+    const demo = getDemoResponse(method, path);
+    if (demo.handled) {
+      // Small delay so loading states render naturally during a demo.
+      await new Promise((resolve) => setTimeout(resolve, 220));
+      return demo.data as T;
+    }
+  }
+
   const headers: Record<string, string> = { Accept: 'application/json' };
   if (body !== undefined) headers['Content-Type'] = 'application/json';
   if (auth && authToken) headers.Authorization = `Bearer ${authToken}`;

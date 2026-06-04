@@ -1,7 +1,43 @@
 # Playoff — Guia de Demo (apresentação)
 
-Passo a passo para rodar o app **com dados reais**, sem precisar de
-credenciais do Spotify ou OpenAI. Tudo roda localmente.
+## ⚡ Caminho mais rápido — DEMO MODE (sem backend nenhum)
+
+Roda o app **inteiro com dados embutidos**: sem PostgreSQL, sem API, sem
+Spotify. Ideal pra apresentar na web em segundos. As telas (Votar, Ranking,
+Histórico, Perfil) já vêm cheias e o login fica automático.
+
+**Windows (PowerShell):**
+
+```powershell
+cd C:\Users\Atlas\Playoff-Mobile
+git checkout claude/funny-pasteur-cj7ct
+git pull origin claude/funny-pasteur-cj7ct
+pnpm install
+Set-Content apps\mobile\.env "EXPO_PUBLIC_DEMO_MODE=true"
+cd apps\mobile
+npx.cmd expo start --web -c
+```
+
+**macOS / Linux:**
+
+```bash
+cd Playoff-Mobile && git pull origin claude/funny-pasteur-cj7ct && pnpm install
+echo "EXPO_PUBLIC_DEMO_MODE=true" > apps/mobile/.env
+cd apps/mobile && npx expo start --web -c
+```
+
+Quando aparecer `Web is waiting on http://localhost:8081`, aperte **`w`** (ou
+abra esse link no navegador). Pronto pra apresentar. ✅
+
+> Para voltar ao modo real (com API), troque para `EXPO_PUBLIC_DEMO_MODE=false`
+> e siga as seções abaixo.
+
+---
+
+## Modo completo — com API real e PostgreSQL
+
+Passo a passo para rodar o app **com dados reais** vindos do backend, sem
+precisar de credenciais do Spotify ou OpenAI. Tudo roda localmente.
 
 ## 1. Pré-requisitos
 
