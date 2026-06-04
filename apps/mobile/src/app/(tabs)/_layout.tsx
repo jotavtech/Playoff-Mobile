@@ -6,7 +6,7 @@ export default function TabLayout() {
   return (
     <Tabs
       tabBar={(props) => <BottomNavigation {...props} />}
-      screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: palette.black } }}
+      screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: palette?.black ?? '#070707' } }}
     >
       <Tabs.Screen name="index" options={{ title: 'Home' }} />
       <Tabs.Screen name="vote" options={{ title: 'Votar' }} />

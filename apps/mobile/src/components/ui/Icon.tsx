@@ -107,7 +107,7 @@ function renderPaths(
           <Circle cx={12} cy={12} r={9} fill={color} />
           <Path
             d="M7.5 10.2c2.8-.7 6-.5 8.6 1M8 13c2.2-.5 4.6-.3 6.6.9M8.4 15.6c1.7-.4 3.4-.2 4.9.7"
-            stroke={palette.black}
+            stroke={palette?.black ?? '#070707'}
             strokeWidth={1.4}
             strokeLinecap="round"
             fill="none"

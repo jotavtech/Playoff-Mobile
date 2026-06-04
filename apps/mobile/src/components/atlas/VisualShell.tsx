@@ -30,6 +30,8 @@ export function VisualShell({
   const { width } = useWindowDimensions();
   const lowEndMode = useSettingsStore((s) => s.lowEndMode);
   const theme = accentPalettes[tone];
+  // Defensive fallback: never crash if the theme module is momentarily undefined.
+  const black = palette?.black ?? '#070707';
   const horizontalPadding = width >= 520 ? 24 : 20;
   const contentStyle = {
     width: '100%' as const,
@@ -46,7 +48,7 @@ export function VisualShell({
       style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, overflow: 'hidden' }}
     >
       <LinearGradient
-        colors={[palette.black, palette.black, theme.surface, palette.black]}
+        colors={[black, black, theme?.surface ?? black, black]}
         locations={[0, 0.3, 0.68, 1]}
         style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
       />
@@ -98,7 +100,7 @@ export function VisualShell({
 
   if (!scroll) {
     return (
-      <View style={{ flex: 1, backgroundColor: palette.black }}>
+      <View style={{ flex: 1, backgroundColor: black }}>
         {background}
         <View style={[contentStyle, { flex: 1 }]}>{children}</View>
       </View>
